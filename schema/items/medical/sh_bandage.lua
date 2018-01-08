@@ -1,0 +1,10 @@
+ITEM.name = "Bandage"
+ITEM.model = "models/healthvial.mdl"
+ITEM.width = 1
+ITEM.height = 1
+ITEM.desc = "A Medical Item"
+ITEM.category = "Medical"
+ITEM.heal = 5
+ITEM.uses = 1
+ITEM.reps = 5
+ITEM.bandage = true
