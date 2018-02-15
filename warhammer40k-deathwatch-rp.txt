@@ -1,7 +1,7 @@
 "sample"
 {
 	"base"		"nutscript"
-	"title"		"Warhammer 40k RP"
+	"title"		"warhammer40krp"
 	"author"	"Zadkiel"
 	"menusystem"	"1"
 }
