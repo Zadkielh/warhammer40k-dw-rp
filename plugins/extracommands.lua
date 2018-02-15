@@ -141,13 +141,13 @@ nut.command.add("spawnitem", {
 nut.command.add("forums", {
     syntax = "<No Input>",
 	onRun = function(client, arguments)
-	 client:SendLua([[gui.OpenURL("http://spite.boards.net/")]])
+	 client:SendLua([[gui.OpenURL("Sorry, we don't have any forums yet.")]])
 	end
 })
 
 nut.command.add("content", {
     syntax = "<No Input>",
 	onRun = function(client, arguments)
-	client:SendLua([[gui.OpenURL("http://steamcommunity.com/sharedfiles/filedetails/?id=773495550")]])
+	client:SendLua([[gui.OpenURL("http://steamcommunity.com/sharedfiles/filedetails/?id=860207177")]])
 	end
 })

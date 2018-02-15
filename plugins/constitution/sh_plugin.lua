@@ -26,7 +26,6 @@ if (SERVER) then
 		local value = client:getChar():getAttrib("con", 0)
 	
 		if (IsValid(client)) then
-			print(value)
 			client:SetMaxHealth(client:GetMaxHealth() + (value / 2))
 			client:SetHealth(client:GetMaxHealth())
 			
