@@ -1,17 +1,35 @@
-SCHEMA.name = "Test RP"
-SCHEMA.introName = "Test RP"
+SCHEMA.name = "Warhammer 40k RP"
+SCHEMA.introName = "Warhammer 40k: Deathwatch RP"
 SCHEMA.author = "Zadkiel"
 SCHEMA.desc = ""
 
 nut.currency.set("", "Credit", "Credits")
-nut.config.menuMusic = "sound/PRMmuN7wdFFH.128.mp3"
+nut.config.menuMusic = "sound/bloodystream.mp3"
 
-nut.util.include("libs/cl_40k_hud2.lua")
-nut.util.include("libs/cl_fonts.lua")
-nut.util.include("sh_schema_commands.lua")
-nut.util.include("sh_flags.lua")
-nut.util.include("sh_chatcommands.lua")
-nut.util.include("sh_models.lua")
+nut.util.includeDir("libs")
+nut.util.includeDir("lua/commands")
+nut.util.include("lua/sh_flags.lua")
+nut.util.include("lua/sh_models.lua")
+nut.util.includeDir("lua/medical")
+nut.util.includeDir("lua/server")
+print([[
+
+////////////////////////////////////////////
+//// Zadkiel's Schema has been loaded	////
+//// succesfully, if there are any	////
+//// problems, report them to Zadkiel	////
+////					////
+//// Have a good day!			////
+////					////
+////////////////////////////////////////////
+
+]]
+)
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 
 function SCHEMA:PlayerLoadedChar(client, netChar, prevChar)
     if (prevChar) then
@@ -82,5 +100,18 @@ function ClassKeepValues(client)
 		end
 	end 
 end
+
+
+------------------------------- VGUI TESTING ----------------------------------------
+/*
+function SCHEMA:CreateMenuButtons(tabs)			
+		tabs["Tech Tree"] = function(panel)
+			panel:Add("nut_TechTree")
+		end
+end
+*/
+
+--- Adds a panel in the f4 menu called Tech Tree
+
 
 

@@ -1,4 +1,4 @@
-/*nut.bar = nut.bar or {}
+nut.bar = nut.bar or {}
 nut.bar.list = {}
 nut.bar.delta = nut.bar.delta or {}
 nut.bar.actionText = ""
@@ -60,7 +60,7 @@ function nut.bar.draw(x, y, w, h, value, color)
 	surface.SetMaterial(gradient)
 	surface.DrawTexturedRect(x, y, w, h)
 	
-	draw.SimpleText((value * 100), "CenturyGothic", x + w*.03, y + h/2 - 2, color_white, 3, 1)
+	draw.SimpleText((math.Round( (value * 100), 1 )), "CenturyGothic", x + w*.03, y + h/2 - 2, color_white, 3, 1)
 end	
 
 local TEXT_COLOR = Color(240, 240, 240)
@@ -69,6 +69,8 @@ local SHADOW_COLOR = Color(20, 20, 20)
 local Approach = math.Approach
 local hp = nut.util.getMaterial("vgui/hp.png")
 local armor = nut.util.getMaterial("vgui/Armor.png")
+local stm = nut.util.getMaterial("vgui/stm.png")
+local hunger = nut.util.getMaterial("vgui/hunger.png")
 
 BAR_HEIGHT = 10
 
@@ -107,6 +109,14 @@ function nut.bar.drawAll()
 					surface.SetDrawColor( 255, 255, 255, 255 )
 					surface.SetMaterial( armor )
 					surface.DrawTexturedRect( 60, 30, 30, 30)
+					
+					surface.SetDrawColor( 255, 255, 255, 255 )
+					surface.SetMaterial( stm )
+					surface.DrawTexturedRect( 60, 60, 25, 25)
+					
+					surface.SetDrawColor( 255, 255, 255, 255 )
+					surface.SetMaterial( hunger )
+					surface.DrawTexturedRect( 60, 86, 30, 30)
 		end
 	end
 
