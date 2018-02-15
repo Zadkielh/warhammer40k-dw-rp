@@ -1,0 +1,7 @@
+"sample"
+{
+	"base"		"nutscript"
+	"title"		"Test RP"
+	"author"	"Zadkiel"
+	"menusystem"	"1"
+}
