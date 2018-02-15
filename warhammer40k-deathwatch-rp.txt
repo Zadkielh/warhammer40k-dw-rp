@@ -1,7 +1,7 @@
 "sample"
 {
 	"base"		"nutscript"
-	"title"		"warhammer40krp"
+	"title"		"warhammer40k-deatwatch-rp"
 	"author"	"Zadkiel"
 	"menusystem"	"1"
 }
