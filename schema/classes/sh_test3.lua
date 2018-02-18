@@ -1,4 +1,4 @@
--- Set the 'nice' display name for the class.
+--[[-- Set the 'nice' display name for the class.
 CLASS.name = "Flame Trooper"
 -- Set the faction that the class belongs to.
 CLASS.faction = FACTION_CT

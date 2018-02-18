@@ -10,23 +10,23 @@ nut.util.includeDir("libs")
 nut.util.includeDir("lua/commands")
 nut.util.include("lua/sh_flags.lua")
 nut.util.include("lua/sh_models.lua")
-nut.util.includeDir("lua/medical")
+--nut.util.includeDir("lua/medical")
 nut.util.includeDir("lua/server")
 print([[
 
 ////////////////////////////////////////////
 //// Zadkiel's Schema has been loaded	////
-//// succesfully, if there are any	////
+//// succesfully, if there are any		////
 //// problems, report them to Zadkiel	////
-////					////
-//// Have a good day!			////
-////					////
+////									////
+//// Have a good day!					////
+////									////
 ////////////////////////////////////////////
 
 ]]
 )
 
-function GM:GetGameDescription()
+function SCHEMA:GetGameDescription()
 	return "Warhammer 40k RP"
 end
 
