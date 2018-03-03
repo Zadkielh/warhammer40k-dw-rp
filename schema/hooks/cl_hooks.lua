@@ -45,7 +45,7 @@ function SCHEMA:HUDPaint()
 end
 
 function SCHEMA:addDisplay(text, color)
-	if (LocalPlayer():isCombine()) then
+	if (LocalPlayer():getChar():hasFlags("V")) then
 		color = color or Color(0, 0, 0)
 
 		SCHEMA.displays[#SCHEMA.displays + 1] = {text = tostring(text):upper(), color = color, realText = ""}
@@ -56,7 +56,7 @@ end
 function SCHEMA:OnChatReceived(client, chatType, text, anonymous)
 	local class = nut.chat.classes[chatType]
 
-	if (client:isCombine() and class and class.filter == "ic") then
+	if (client:getChar():hasFlags("V") and class and class.filter == "ic") then
 		return "<:: "..text.." ::>"
 	end
 end

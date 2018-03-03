@@ -1,5 +1,5 @@
 
---[[nut.command.add("request", {
+nut.command.add("request", {
 	syntax = "<string text>",
 	onRun = function(client, arguments)
 		if ((client.nutNextReq or 0) < CurTime()) then
@@ -22,7 +22,23 @@
 		end
 	end
 })
-]]
+
+nut.command.add("data", {
+	syntax = "<string name>",
+	onRun = function(client, arguments)
+		local target = nut.command.findPlayer(client, table.concat(arguments, " "))
+
+		if (IsValid(target) and target:getChar()) then
+			if (!hook.Run("CanPlayerViewData", client, target)) then
+				return "@noViewData"
+			end
+
+			client.nutDataTarget = target
+			netstream.Start(client, "plyData", target:getChar():getData("txt"), target:Name().." ["..target:getDigits().."]", hook.Run("CanPlayerEditData", client, target))
+		end
+	end
+})
+
 nut.command.add("charsetclass", {
     adminOnly = true,
     syntax = "<string name> <string class>",

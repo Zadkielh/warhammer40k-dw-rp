@@ -10,6 +10,8 @@ nut.util.includeDir("libs")
 nut.util.includeDir("lua/commands")
 nut.util.include("lua/sh_flags.lua")
 nut.util.include("lua/sh_models.lua")
+nut.util.include("lua/sh_voices.lua")
+nut.util.include("sh_config.lua")
 --nut.util.includeDir("lua/medical")
 nut.util.includeDir("lua/server")
 print([[
@@ -65,7 +67,6 @@ function SCHEMA:PostPlayerLoadout(client)
 end
 
 
-
 -----------------------------------------------------------------------------------------------------------------------------------------------
 --[[function FactionKeepValues(client, faction)
 	
@@ -115,5 +116,30 @@ end
 
 --- Adds a panel in the f4 menu called Tech Tree
 
+
+nut.chat.register("dispatch", {
+	color = Color(192, 57, 43),
+	onCanSay = function(client)
+		if (!client:getChar():hasFlags("V")) then
+			client:notifyLocalized("notAllowed")
+
+			return false
+		end
+	end,
+	onChatAdd = function(speaker, text)
+		chat.AddText(Color(192, 57, 43), L("icFormat", "Dispatch", text))
+	end,
+	prefix = {"/dispatch"}
+})
+
+nut.chat.register("request", {
+	color = Color(210, 77, 87),
+	onChatAdd = function(speaker, text)
+		chat.AddText(Color(210, 77, 87), text)
+	end,
+	onCanHear = function(speaker, listener)
+		return listener:isCombine()
+	end
+})
 
 

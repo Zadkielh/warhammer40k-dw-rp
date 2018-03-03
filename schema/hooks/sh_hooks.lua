@@ -1,5 +1,5 @@
 function SCHEMA:CanPlayerEditData(client, target)
-	if (client:isCombine()) then
+	if (client:getChar():hasFlags("V")) then
 		return true
 	end
 

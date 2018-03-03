@@ -41,5 +41,5 @@ end
 -- We set a global variable to save this index for easier reference.
 CLASS_FLAME_TROOPER = CLASS.index
 
-
+]]
 
