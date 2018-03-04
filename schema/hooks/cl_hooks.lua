@@ -67,3 +67,13 @@ function SCHEMA:RenderScreenspaceEffects()
 	DrawColorModify(color)
 end
 
+function SCHEMA:LoadIntro()
+	-- If skip intro is on
+	--if (true) then 
+		if (IsValid(nut.gui.char)) then
+			vgui.Create("nutCharMenu")
+		end
+	--else
+
+	--end
+end

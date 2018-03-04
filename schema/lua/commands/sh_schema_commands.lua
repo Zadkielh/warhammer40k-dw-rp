@@ -70,4 +70,20 @@ nut.command.add("promote", {
 })
 
 
+nut.command.add("playintro", {
+    adminOnly = true,
+    syntax = "<string name>",
+    onRun = function(client, args)
+        local Target = nut.command.findPlayer(client, args[1])
+        if not IsValid(Target) then return end
+		local char = Target:getChar()
+			local client = char:getPlayer()
+		
+		net.Start( "playIntro" )
+		net.Send( target )
+
+
+    end
+})
+
 
