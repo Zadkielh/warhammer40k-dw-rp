@@ -1,44 +1,3 @@
-
-nut.command.add("request", {
-	syntax = "<string text>",
-	onRun = function(client, arguments)
-		if ((client.nutNextReq or 0) < CurTime()) then
-			local text = table.concat(arguments, " ")
-			local item = client:getChar():getInv():hasItem("request")
-
-			if (item) then
-				if (text:find("%S")) then
-					client.nutNextReq = CurTime() + 5
-					nut.chat.send(client, "request", "["..item:getData("name", client:Name())..", "..item:getData("id", "ERROR").."] "..text)
-
-					return client:EmitSound("buttons/combine_button5.wav", 50, 40)
-				end
-			else
-				return "@noReqDev"
-			end
-
-			client.nutNextReq = CurTime() + 1
-			client:EmitSound("buttons/combine_button3.wav", 75, 150)
-		end
-	end
-})
-
-nut.command.add("data", {
-	syntax = "<string name>",
-	onRun = function(client, arguments)
-		local target = nut.command.findPlayer(client, table.concat(arguments, " "))
-
-		if (IsValid(target) and target:getChar()) then
-			if (!hook.Run("CanPlayerViewData", client, target)) then
-				return "@noViewData"
-			end
-
-			client.nutDataTarget = target
-			netstream.Start(client, "plyData", target:getChar():getData("txt"), target:Name().." ["..target:getDigits().."]", hook.Run("CanPlayerEditData", client, target))
-		end
-	end
-})
-
 nut.command.add("charsetclass", {
     adminOnly = true,
     syntax = "<string name> <string class>",
@@ -99,8 +58,8 @@ nut.command.add("promote", {
 		local ply = char:getPlayer()
 
 			if char:hasFlags("T") then
-				if Target:getChar():getFaction() == FACTION_RECRUIT then
-					Target:setFaction(FACTION_TEST)
+				if Target:getChar():getFaction() == FACTION_REC then
+					Target:setFaction(FACTION_DW_TAC)
 				else
 					client:notify("Character is not a recruit")
 				end

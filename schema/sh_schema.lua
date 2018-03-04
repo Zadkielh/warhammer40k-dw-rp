@@ -4,14 +4,12 @@ SCHEMA.author = "Zadkiel"
 SCHEMA.desc = ""
 
 nut.currency.set("", "Credit", "Credits")
-nut.config.menuMusic = "sound/bloodystream.mp3"
+nut.config.menuMusic = "bloodystream.mp3"
 
 nut.util.includeDir("libs")
 nut.util.includeDir("lua/commands")
 nut.util.include("lua/sh_flags.lua")
 nut.util.include("lua/sh_models.lua")
-nut.util.include("lua/sh_voices.lua")
-nut.util.include("sh_config.lua")
 --nut.util.includeDir("lua/medical")
 nut.util.includeDir("lua/server")
 print([[
@@ -40,7 +38,9 @@ function SCHEMA:PlayerLoadedChar(client, netChar, prevChar)
         client:notifyLocalized("Loaded Character")
     end
 
+	
     local char = client:getChar()
+	
 	
     if (char) then
        return char
@@ -62,7 +62,6 @@ function SCHEMA:PostPlayerLoadout(client)
 			--if client:Team() != nil then
 				--FactionKeepValues(client, client:Team())
 			--end
-			
 	end
 end
 
@@ -104,20 +103,7 @@ function ClassKeepValues(client)
 	end 
 end
 
-
-------------------------------- VGUI TESTING ----------------------------------------
-/*
-function SCHEMA:CreateMenuButtons(tabs)			
-		tabs["Tech Tree"] = function(panel)
-			panel:Add("nut_TechTree")
-		end
-end
-*/
-
---- Adds a panel in the f4 menu called Tech Tree
-
-
-nut.chat.register("dispatch", {
+nut.chat.register("hq", {
 	color = Color(192, 57, 43),
 	onCanSay = function(client)
 		if (!client:getChar():hasFlags("V")) then
@@ -127,19 +113,9 @@ nut.chat.register("dispatch", {
 		end
 	end,
 	onChatAdd = function(speaker, text)
-		chat.AddText(Color(192, 57, 43), L("icFormat", "Dispatch", text))
+		chat.AddText(Color(192, 57, 43), L("icFormat", "Headquarters", text))
 	end,
-	prefix = {"/dispatch"}
-})
-
-nut.chat.register("request", {
-	color = Color(210, 77, 87),
-	onChatAdd = function(speaker, text)
-		chat.AddText(Color(210, 77, 87), text)
-	end,
-	onCanHear = function(speaker, listener)
-		return listener:isCombine()
-	end
+	prefix = {"/hq"}
 })
 
 

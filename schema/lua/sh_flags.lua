@@ -21,6 +21,9 @@
 	nut.flag.add("P", "Access to PAC 3 editor.")
 	nut.flag.add("A", "Access to Advert commands")
 	nut.flag.add("G", "Access to GM commands")
+	nut.flag.add("V", "Access to HQ commands")
+	nut.flag.add("*", "Psyker flag")
+
 
 hook.Add( "PrePACEditorOpen", "FlagCheck", function( client )
    if not client:getChar():hasFlags("P") then

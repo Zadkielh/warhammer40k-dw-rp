@@ -1,6 +1,5 @@
 ATTRIBUTE.name = "Constitution"
-ATTRIBUTE.desc = "Increases Hit Points."
+ATTRIBUTE.desc = "Increases Ressistances."
 
 function ATTRIBUTE:onSetup(client, value)
-	local value = client:getChar():getAttrib("con", 0)
 end

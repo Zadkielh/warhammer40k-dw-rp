@@ -70,7 +70,7 @@ local Approach = math.Approach
 local hp = nut.util.getMaterial("vgui/hp.png")
 local armor = nut.util.getMaterial("vgui/Armor.png")
 local stm = nut.util.getMaterial("vgui/stm.png")
-local hunger = nut.util.getMaterial("vgui/hunger.png")
+local psy = nut.util.getMaterial("vgui/psyker.png")
 
 BAR_HEIGHT = 10
 
@@ -84,7 +84,7 @@ function nut.bar.drawAll()
 	local deltas = nut.bar.delta
 	local frameTime = FrameTime()
 	local curTime = CurTime()
-	local updateValue = frameTime * 0.6
+	local updateValue = frameTime * 1.2
 	
 	for i = 1, #nut.bar.list do
 		local bar = nut.bar.list[i]
@@ -115,8 +115,9 @@ function nut.bar.drawAll()
 					surface.DrawTexturedRect( 60, 60, 25, 25)
 					
 					surface.SetDrawColor( 255, 255, 255, 255 )
-					surface.SetMaterial( hunger )
-					surface.DrawTexturedRect( 60, 86, 30, 30)
+					surface.SetMaterial( psy )
+					surface.DrawTexturedRect( 60, 90, 25, 25)
+					
 		end
 	end
 
@@ -131,5 +132,9 @@ do
 	nut.bar.add(function()
 		return math.min(LocalPlayer():Armor() / 100, 1)
 	end, Color(30, 37, 101), nil, "armor")
+	
+	nut.bar.add(function()
+		return LocalPlayer():getLocalVar("stm", 0) / 100
+	end, Color(55, 115, 40), nil, "stm")
 	
 end
