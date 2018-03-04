@@ -1,11 +1,11 @@
-FACTION.name = "Death Watch Sergeant"
+FACTION.name = "Death Watch Chaplain"
 FACTION.desc = ""
-FACTION.color = Color(0, 119, 255)
+FACTION.color = Color(0, 230, 255)
 FACTION.isDefault = false
 FACTION.models = {
-	"models/zadkiel/deathwatch/mk7/deathwatch_mk7_aquila.mdl"
+	"models/zadkiel/deathwatch/chaplain/models/chaplain_marine.mdl"
 }
-FACTION.armor = 150
+FACTION.armor = 100
 FACTION.maxhealth = 250
 FACTION.health = 250
 
@@ -16,6 +16,6 @@ function FACTION:onSpawn(client)
 		client:SetModelScale(1.36, 0)
 end
 
-FACTION.pay = 20
+FACTION.pay = 10
 FACTION.isGloballyRecognized = true
-FACTION_DW_SGT = FACTION.index
+FACTION_DW_CHAP = FACTION.index

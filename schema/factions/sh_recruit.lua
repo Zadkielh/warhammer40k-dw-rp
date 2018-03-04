@@ -3,7 +3,8 @@ FACTION.desc = "Recruit"
 FACTION.color = Color(16, 159, 0)
 FACTION.isDefault = true
 FACTION.models = {
-	"models/lotusservers/characters/deathwatch/players/deathwatch_players.mdl"
+	"models/player/Group01/female_01.mdl",
+    "models/player/Group01/male_01.mdl"
 }
 
 FACTION.armor = 0
