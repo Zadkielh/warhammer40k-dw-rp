@@ -69,7 +69,7 @@ local SHADOW_COLOR = Color(20, 20, 20)
 local Approach = math.Approach
 local hp = nut.util.getMaterial("vgui/hp.png")
 local armor = nut.util.getMaterial("vgui/Armor.png")
-local stm = nut.util.getMaterial("vgui/stm.png")
+local stm = nut.util.getMaterial("vgui/marine.png")
 local psy = nut.util.getMaterial("vgui/psyker.png")
 
 BAR_HEIGHT = 10
