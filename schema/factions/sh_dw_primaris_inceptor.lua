@@ -3,7 +3,7 @@ FACTION.desc = ""
 FACTION.color = Color(255, 255, 255)
 FACTION.isDefault = false
 FACTION.models = {
-	"models/zadkiel/deathwatch/primaris_inceptor/primaris_incepto.mdl"
+	"models/zadkiel/deathwatch/players/primaris_incepto_player.mdl"
 }
 FACTION.armor = 300
 FACTION.maxhealth = 400

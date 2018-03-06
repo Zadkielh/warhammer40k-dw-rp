@@ -138,7 +138,7 @@ local PANEL = {}
 			end
 
 			i = i + 0.33
-			y = y + label:GetTall() - 30
+			y = y + label:GetTall()
 
 			self.buttons[#self.buttons + 1] = label
 			return label

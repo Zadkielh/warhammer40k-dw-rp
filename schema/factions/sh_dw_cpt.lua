@@ -3,7 +3,7 @@ FACTION.desc = ""
 FACTION.color = Color(0, 89, 255)
 FACTION.isDefault = false
 FACTION.models = {
-	"models/zadkiel/deathwatch/mk7/models/deathwatch_mk7_aquila.mdl"
+	"models/zadkiel/deathwatch/players/deathwatch_mk7_aquila_player.mdl"
 }
 FACTION.armor = 200
 FACTION.maxhealth = 250

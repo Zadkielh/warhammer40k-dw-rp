@@ -1,9 +1,9 @@
-FACTION.name = "Death Watch Librarian"
+FACTION.name = "Librarius"
 FACTION.desc = ""
 FACTION.color = Color(220, 0, 255)
 FACTION.isDefault = false
 FACTION.models = {
-	"models/zadkiel/deathwatch/librarian/models/librarian.mdl"
+	"models/zadkiel/deathwatch/players/librarian_player.mdl"
 }
 FACTION.armor = 100
 FACTION.maxhealth = 250

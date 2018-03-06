@@ -27,7 +27,7 @@ local PANEL = {}
 		self.title:SizeToContentsY()
 		self.title:SetTall(self.title:GetTall() + 16)
 		self.title.Paint = function(this, w, h)
-			surface.SetDrawColor(0, 0, 0, 150)
+			surface.SetDrawColor(0, 0, 0, 155)
 			surface.DrawRect(0, 0, w, h)
 		end
 
@@ -39,32 +39,84 @@ local PANEL = {}
 		self.layout = self.scroll:Add("DListLayout")
 		self.layout:Dock(TOP)
 
-		self.teams = {}
+		
+		self.flags = {}
+		self.flags[1] = {name = "Watch Company Primus ", color = Color(  255, 128, 0 ), flag = "1"}
+		self.flags[2] = {name = "Watch Company Secundus ", color = Color(  255, 255, 0 ),flag = "2"}
+		self.flags[3] = {name = "Watch Company Tertius ", color = Color(  128, 128, 0 ), flag = "3"}
+		self.flags[4] = {name = "Watch Company Quartus ", color = Color(  0, 255, 128 ), flag = "4"}
+		self.flags[5] = {name = "Watch Company Quintos ", color = Color(  0, 128, 255 ), flag = "5"}
+		self.flags[6] = {name = "Unassigned ", color = Color(  0, 255, 0 ), flag = "6"}
+		
+		local players = player.GetAll()
+		for k, v in pairs(self.flags) do
+			
+				local list = self.layout:Add("DListLayout")
+				list:Dock(TOP)
+				list:SetTall(28)
+				list.Think = function(this)
+					for k2, v2 in ipairs(players) do
+						if v2:getChar():hasFlags(v.flag) then
+							
+							if (!IsValid(v2.nutScoreSlot) or v2.nutScoreSlot:GetParent() != this) then
+								if (IsValid(v2.nutPlayerSlot)) then
+									v2.nutPlayerSlot:SetParent(this)
+								else
+									self:addPlayer(v2, this)
+								end
+							end
+						end
+					end
+				end
+				
+				local color = v.color
+				local r, g, b = color.r, color.g, color.b
+				
+				local header = list:Add("DLabel")
+				header:Dock(TOP)
+				header:SetText(L(v.name))
+				header:SetTextInset(3, 0)
+				header:SetFont("nutMediumFont")
+				header:SetTextColor(color_white)
+				header:SetExpensiveShadow(1, color_black)
+				header:SetTall(28)
+				header.Paint = function(this, w, h)
+					surface.SetDrawColor(r, g, b, 20)
+					surface.DrawRect(0, 0, w, h)
+				end
+
+			end
+			
+			self.teams = {}
 		self.slots = {}
 		self.i = {}
 
-		for k, v in ipairs(nut.faction.indices) do
-			local color = team.GetColor(k)
+		for kfac, vfac in ipairs(nut.faction.indices) do
+			if /*kfac == FACTION_DW_TECH or kfac == FACTION_DW_APOTH or */kfac == FACTION_DW_CHAP or kfac == FACTION_DW_LIB then
+			local color = team.GetColor(kfac)
 			local r, g, b = color.r, color.g, color.b
 
 			local list = self.layout:Add("DListLayout")
 			list:Dock(TOP)
 			list:SetTall(28)
 			list.Think = function(this)
-				for k2, v2 in ipairs(team.GetPlayers(k)) do
-					if (!IsValid(v2.nutScoreSlot) or v2.nutScoreSlot:GetParent() != this) then
-						if (IsValid(v2.nutPlayerSlot)) then
-							v2.nutPlayerSlot:SetParent(this)
+			
+				for kfac2, vfac2 in ipairs(team.GetPlayers(k)) do
+				
+					if (!IsValid(vfac2.nutScoreSlot) or vfac2.nutScoreSlot:GetParent() != this) then
+						if (IsValid(vfac2.nutPlayerSlot)) then
+							vfac2.nutPlayerSlot:SetParent(this)
 						else
-							self:addPlayer(v2, this)
+							self:addPlayer(vfac2, this)
 						end
 					end
 				end
 			end
 
+		
 			local header = list:Add("DLabel")
 			header:Dock(TOP)
-			header:SetText(L(v.name))
+			header:SetText(vfac.name)
 			header:SetTextInset(3, 0)
 			header:SetFont("nutMediumFont")
 			header:SetTextColor(color_white)
@@ -74,27 +126,15 @@ local PANEL = {}
 				surface.SetDrawColor(r, g, b, 20)
 				surface.DrawRect(0, 0, w, h)
 			end
-
-			self.teams[k] = list
+			end
 		end
 	end
 
 	function PANEL:Think()
 		if ((self.nextUpdate or 0) < CurTime()) then
-			self.title:SetText(nut.config.get("sbTitle", GetHostName()))
+			self.title:SetText(nut.config.get("sbTitle"))
 
 			local visible, amount
-
-			for k, v in ipairs(self.teams) do
-				visible, amount = v:IsVisible(), team.NumPlayers(k)
-
-				if (visible and amount == 0) then
-					v:SetVisible(false)
-					self.layout:InvalidateLayout()
-				elseif (!visible and amount > 0) then
-					v:SetVisible(true)
-				end
-			end
 
 			for k, v in pairs(self.slots) do
 				if (IsValid(v)) then

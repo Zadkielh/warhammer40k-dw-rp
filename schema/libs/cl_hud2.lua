@@ -43,6 +43,7 @@ local color_dark = Color(0, 0, 0, 225)
 local gradient = nut.util.getMaterial("vgui/gradient-u")
 local gradient2 = nut.util.getMaterial("vgui/gradient-d")
 local surface = surface
+local text1 = false
 
 function nut.bar.draw(x, y, w, h, value, color)
 	nut.util.drawBlurAt(x, y, w, h)
@@ -61,6 +62,7 @@ function nut.bar.draw(x, y, w, h, value, color)
 	surface.DrawTexturedRect(x, y, w, h)
 	
 	draw.SimpleText((math.Round( (value * 100), 1 )), "CenturyGothic", x + w*.03, y + h/2 - 2, color_white, 3, 1)
+
 end	
 
 local TEXT_COLOR = Color(240, 240, 240)
@@ -126,11 +128,11 @@ end
 
 do
 	nut.bar.add(function()
-		return LocalPlayer():Health() / LocalPlayer():GetMaxHealth()
+		return (LocalPlayer():Health() / 100)
 	end, Color(150, 30, 20), nil, "health")
 
 	nut.bar.add(function()
-		return math.min(LocalPlayer():Armor() / 100, 1)
+		return (LocalPlayer():Armor() / 100)
 	end, Color(30, 37, 101), nil, "armor")
 	
 	nut.bar.add(function()

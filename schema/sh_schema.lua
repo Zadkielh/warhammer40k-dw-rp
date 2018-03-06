@@ -4,7 +4,6 @@ SCHEMA.author = "Zadkiel"
 SCHEMA.desc = ""
 
 nut.currency.set("", "Credit", "Credits")
-nut.config.menuMusic = "bloodystream.mp3"
 
 nut.util.includeDir("libs")
 nut.util.includeDir("lua/commands")
@@ -53,7 +52,7 @@ end
 
 function SCHEMA:PostPlayerLoadout(client)
 
-	if (IsValid(client)) then
+	/*if (IsValid(client)) then
 				
 			if client:getChar():getClass() != nil then
 				ClassKeepValues(client) 
@@ -62,7 +61,7 @@ function SCHEMA:PostPlayerLoadout(client)
 			--if client:Team() != nil then
 				--FactionKeepValues(client, client:Team())
 			--end
-	end
+	end*/
 end
 
 
@@ -80,7 +79,7 @@ end
 	end
 end--]]
 
-
+/*
 function ClassKeepValues(client)
 
 	if (IsValid(client)) then
@@ -101,7 +100,7 @@ function ClassKeepValues(client)
 		
 		end
 	end 
-end
+end*/
 
 nut.chat.register("hq", {
 	color = Color(192, 57, 43),

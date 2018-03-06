@@ -1,9 +1,9 @@
-FACTION.name = "Death Watch Chaplain"
+FACTION.name = "Reclusiam"
 FACTION.desc = ""
 FACTION.color = Color(0, 230, 255)
 FACTION.isDefault = false
 FACTION.models = {
-	"models/zadkiel/deathwatch/chaplain/models/chaplain_marine.mdl"
+	"models/zadkiel/deathwatch/players/chaplain_marine_player.mdl"
 }
 FACTION.armor = 100
 FACTION.maxhealth = 250

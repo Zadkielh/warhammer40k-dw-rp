@@ -3,7 +3,7 @@ FACTION.desc = "fAdminDesc"
 FACTION.color = Color(237, 179, 97)
 FACTION.isDefault = false
 FACTION.models = {
-	"models/zadkiel/ultramarines/roboute/primarch_guilliman_npc.mdl"
+	"models/breen.mdl"
 }
 FACTION.pay = 40
 FACTION.isGloballyRecognized = true

@@ -3,7 +3,7 @@ FACTION.desc = ""
 FACTION.color = Color(255, 144, 0)
 FACTION.isDefault = false
 FACTION.models = {
-	"models/zadkiel/deathwatch/techmarine/models/techmarine.mdl"
+	"models/zadkiel/deathwatch/players/techmarine_player.mdl"
 }
 FACTION.armor = 150
 FACTION.maxhealth = 250

@@ -3,7 +3,7 @@ FACTION.desc = ""
 FACTION.color = Color(255, 255, 255)
 FACTION.isDefault = false
 FACTION.models = {
-	"models/zadkiel/deathwatch/apothecary/models/apothecary_marine.mdl"
+	"models/zadkiel/deathwatch/players/apothecary_marine_player.mdl"
 }
 FACTION.armor = 150
 FACTION.maxhealth = 250
