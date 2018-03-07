@@ -5,14 +5,14 @@ FACTION.isDefault = false
 FACTION.models = {
 	"models/zadkiel/deathwatch/players/primaris_incepto_player.mdl"
 }
-FACTION.armor = 300
-FACTION.maxhealth = 400
-FACTION.health = 400
+FACTION.armor = 450
+FACTION.maxhealth = 2750
+FACTION.health = 2750
 
 function FACTION:onSpawn(client)
-		client:SetArmor(300) -- Sets armour
-		client:SetMaxHealth(400) -- Sets maxhealth, that means the health you can be healed to.
-		client:SetHealth(400) -- Sets your health, you can not be healed to this amount unless your maxhealth is the same. This is needed because gmod sets your health to 100 by default.
+		client:SetArmor(self.armor) -- Sets armour
+		client:SetMaxHealth(self.maxhealth) -- Sets maxhealth, that means the health you can be healed to.
+		client:SetHealth(self.health) -- Sets your health, you can not be healed to this amount unless your maxhealth is the same. This is needed because gmod sets your health to 100 by default.
     	client:SetModelScale( 1.5, 0)
 end
 

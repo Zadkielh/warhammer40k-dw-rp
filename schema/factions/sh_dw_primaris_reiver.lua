@@ -5,9 +5,9 @@ FACTION.isDefault = false
 FACTION.models = {
 	"models/zadkiel/deathwatch/players/primaris_reiver_deathwatch_player.mdl"
 }
-FACTION.armor = 100
-FACTION.maxhealth = 400
-FACTION.health = 400
+FACTION.armor = 250
+FACTION.maxhealth = 2750
+FACTION.health = 2750
 
 function FACTION:onSpawn(client)
 		client:SetArmor(self.armor) -- Sets armour

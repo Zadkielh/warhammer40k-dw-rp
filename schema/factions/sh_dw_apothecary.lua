@@ -5,9 +5,9 @@ FACTION.isDefault = false
 FACTION.models = {
 	"models/zadkiel/deathwatch/players/apothecary_marine_player.mdl"
 }
-FACTION.armor = 150
-FACTION.maxhealth = 250
-FACTION.health = 250
+FACTION.armor = 200
+FACTION.maxhealth = 2250
+FACTION.health = 2250
 
 function FACTION:onSpawn(client)
 		client:SetArmor(self.armor) -- Sets armour

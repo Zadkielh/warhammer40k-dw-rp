@@ -6,14 +6,14 @@ FACTION.models = {
 	"models/zadkiel/deathwatch/players/scoutmarine_player.mdl"
 }
 FACTION.armor = 100
-FACTION.maxhealth = 150
-FACTION.health = 150
+FACTION.maxhealth = 2000
+FACTION.health = 2000
 
 function FACTION:onSpawn(client)
 		client:SetArmor(self.armor) -- Sets armour
 		client:SetMaxHealth(self.maxhealth) -- Sets maxhealth, that means the health you can be healed to.
 		client:SetHealth(self.health) -- Sets your health, you can not be healed to this amount unless your maxhealth is the same. This is needed because gmod sets your health to 100 by default.
-		client:SetModelScale(1.2, 0)
+		client:SetModelScale(1.3, 0)
 end
 
 FACTION.pay = 10
