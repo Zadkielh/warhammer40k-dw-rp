@@ -56,14 +56,14 @@ local PANEL = {}
 				list:SetTall(28)
 				list.Think = function(this)
 					for k2, v2 in ipairs(nut.faction.indices) do
-						for k3, v2 in ipairs(team.GetPlayers(k2)) do
-							if v2:getChar():hasFlags(v.flag) then
+						for k3, v3 in ipairs(team.GetPlayers(k2)) do
+							if v3:getChar():hasFlags(v.flag) then
 							
-								if (!IsValid(v2.nutScoreSlot) or v2.nutScoreSlot:GetParent() != this) then
-									if (IsValid(v2.nutPlayerSlot)) then
-										v2.nutPlayerSlot:SetParent(this)
+								if (!IsValid(v3.nutScoreSlot) or v3.nutScoreSlot:GetParent() != this) then
+									if (IsValid(v3.nutPlayerSlot)) then
+										v3.nutPlayerSlot:SetParent(this)
 									else
-											self:addPlayer(v2, this)
+											self:addPlayer(v3, this)
 									end
 								end
 							end
