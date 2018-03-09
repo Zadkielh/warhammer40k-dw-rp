@@ -39,7 +39,9 @@ local PANEL = {}
 		self.layout = self.scroll:Add("DListLayout")
 		self.layout:Dock(TOP)
 
-		
+		self.teams = {}
+		self.slots = {}
+		self.i = {}
 		self.flags = {}
 		self.flags[1] = {name = "Watch Company Primus ", color = Color(  255, 128, 0 ), flag = "1"}
 		self.flags[2] = {name = "Watch Company Secundus ", color = Color(  255, 255, 0 ),flag = "2"}
@@ -48,21 +50,21 @@ local PANEL = {}
 		self.flags[5] = {name = "Watch Company Quintos ", color = Color(  0, 128, 255 ), flag = "5"}
 		self.flags[6] = {name = "Unassigned ", color = Color(  0, 255, 0 ), flag = "6"}
 		
-		local players = player.GetAll()
 		for k, v in pairs(self.flags) do
-			
 				local list = self.layout:Add("DListLayout")
 				list:Dock(TOP)
 				list:SetTall(28)
 				list.Think = function(this)
-					for k2, v2 in ipairs(players) do
-						if v2:getChar():hasFlags(v.flag) then
+					for k2, v2 in ipairs(nut.faction.indices) do
+						for k3, v2 in ipairs(team.GetPlayers(k2)) do
+							if v2:getChar():hasFlags(v.flag) then
 							
-							if (!IsValid(v2.nutScoreSlot) or v2.nutScoreSlot:GetParent() != this) then
-								if (IsValid(v2.nutPlayerSlot)) then
-									v2.nutPlayerSlot:SetParent(this)
-								else
-									self:addPlayer(v2, this)
+								if (!IsValid(v2.nutScoreSlot) or v2.nutScoreSlot:GetParent() != this) then
+									if (IsValid(v2.nutPlayerSlot)) then
+										v2.nutPlayerSlot:SetParent(this)
+									else
+											self:addPlayer(v2, this)
+									end
 								end
 							end
 						end
@@ -85,11 +87,7 @@ local PANEL = {}
 					surface.DrawRect(0, 0, w, h)
 				end
 
-			end
-			
-			self.teams = {}
-		self.slots = {}
-		self.i = {}
+		end
 
 		for kfac, vfac in ipairs(nut.faction.indices) do
 			if /*kfac == FACTION_DW_TECH or kfac == FACTION_DW_APOTH or */kfac == FACTION_DW_CHAP or kfac == FACTION_DW_LIB then
