@@ -1,4 +1,4 @@
-local PANEL = {}
+/*local PANEL = {}
 	local gradient = nut.util.getMaterial("vgui/gradient-u")
 	local gradient2 = nut.util.getMaterial("vgui/gradient-d")
 

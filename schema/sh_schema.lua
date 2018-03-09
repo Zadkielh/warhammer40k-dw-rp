@@ -11,6 +11,7 @@ nut.util.include("lua/sh_flags.lua")
 nut.util.include("lua/sh_models.lua")
 --nut.util.includeDir("lua/medical")
 nut.util.includeDir("lua/server")
+nut.util.includeDir("derma")
 print([[
 
 ////////////////////////////////////////////
