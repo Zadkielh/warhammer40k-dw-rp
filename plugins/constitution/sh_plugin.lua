@@ -12,10 +12,10 @@ if (SERVER) then
 			end
 		
 			if (IsValid(client)) then
-				client:getChar():updateAttrib("con", 0.01)
+				client:getChar():updateAttrib("con", 0.001)
 			end
-			
-			dmg:ScaleDamage( client:getChar():getAttrib("con", 0) / 100) // Damage is now half of what you would normally take.
+		
+			dmg:ScaleDamage(  1.5 - ((client:getChar():getAttrib("con", 0) / 100)) ) // Damage is now half of what you would normally take.
 		end		
 	end
 end
