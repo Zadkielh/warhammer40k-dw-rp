@@ -86,4 +86,57 @@ nut.command.add("playintro", {
     end
 })
 
+nut.command.add("traitgive", {
+	adminOnly = true,
+	syntax = "<string name> [string traits]",
+	onRun = function(client, arguments)
+		local target = nut.command.findPlayer(client, arguments[1])
+
+		if (IsValid(target) and target:getChar()) then
+			local traits = arguments[2]
+
+			if (!traits) then
+				local available = ""
+
+				-- Aesthetics~~
+				for k, v in SortedPairs(nut.trait.list) do
+					if (!target:getChar():hasTraits(k)) then
+						available = available..k
+					end
+				end
+
+				return client:requestString("@traitGiveTitle", "@traitGiveDesc", function(text)
+					nut.command.run(client, "traitgive", {target:Name(), text})
+				end, available)
+			end
+
+			target:getChar():giveTraits(traits)
+
+			nut.util.notifyLocalized("Gave Traits", nil, client:Name(), target:Name(), traits)
+		end
+	end
+})
+
+nut.command.add("traittake", {
+	adminOnly = true,
+	syntax = "<string name> [string traits]",
+	onRun = function(client, arguments)
+		local target = nut.command.findPlayer(client, arguments[1])
+
+		if (IsValid(target) and target:getChar()) then
+			local traits = arguments[2]
+
+			if (!traits) then
+				return client:requestString("@traitTakeTitle", "@traitTakeDesc", function(text)
+					nut.command.run(client, "traittake", {target:Name(), text})
+				end, target:getChar():getTraits())
+			end
+
+			target:getChar():takeTraits(traits)
+
+			nut.util.notifyLocalized("Removed Traits", nil, client:Name(), traits, target:Name())
+		end
+	end
+})
+
 

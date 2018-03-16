@@ -36,3 +36,26 @@ hook.Add( "PrePACEditorOpen", "FlagCheck", function( client )
        return false
    end
 end )
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

@@ -1,3 +1,5 @@
 util.AddNetworkString( "openRespawnMenu" )
 util.AddNetworkString( "RespawnActivate" )
 util.AddNetworkString( "playIntro" )
+util.AddNetworkString( "sbFlags" )
+util.AddNetworkString( "sbFlagsReturn" )
