@@ -16,7 +16,7 @@
 ITEM.name = "Bolter"
 ITEM.desc = "Boltgun"
 ITEM.model = "models/zadkiel/weapons/bolter.mdl"
-ITEM.class = "weapon_cw2_bolter"
+ITEM.class = "tfa_zad_bolter"
 ITEM.weaponCategory = "primary"
 ITEM.width = 4
 ITEM.price = 450
