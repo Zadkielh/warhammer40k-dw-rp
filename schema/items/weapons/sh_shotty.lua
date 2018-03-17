@@ -13,12 +13,12 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Powerfist"
-ITEM.desc = "Powerfist"
-ITEM.model = "models/zadkiel/weapons/powerfist_regular_right.mdl"
-ITEM.class = "tfa_zad_powerfist"
+ITEM.name = "Assault Shotgun"
+ITEM.desc = "Assault Shotgun"
+ITEM.model = "models/weapons/tfa_ins2/w_m590_olli.mdl"
+ITEM.class = "tfa_ins2_m590o"
 ITEM.weaponCategory = "primary"
-ITEM.width = 2
+ITEM.width = 4
 ITEM.price = 450
 ITEM.height = 2
 ITEM.flag = "y"
