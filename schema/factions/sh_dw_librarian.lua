@@ -1,4 +1,4 @@
-FACTION.name = "Librarius"
+FACTION.name = "Deathwatch Librarian"
 FACTION.desc = ""
 FACTION.color = Color(220, 0, 255)
 FACTION.isDefault = false

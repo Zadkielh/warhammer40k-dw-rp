@@ -1,4 +1,4 @@
-FACTION.name = "Reclusiam"
+FACTION.name = "Deathwatch Chaplain"
 FACTION.desc = ""
 FACTION.color = Color(0, 230, 255)
 FACTION.isDefault = false
