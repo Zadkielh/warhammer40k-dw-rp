@@ -13,11 +13,11 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Codex"
-ITEM.desc = "Codex"
-ITEM.model = "models/hpwrewrite/books/book2.mdl"
-ITEM.class = "weapon_hpwr_stick"
-ITEM.weaponCategory = "primary"
+ITEM.name = "Bolt Pistol"
+ITEM.desc = "Bolt Pistol"
+ITEM.model = "models/zadkiel/weapons/boltpistol.mdl"
+ITEM.class = "weapon_40k_boltpistol"
+ITEM.weaponCategory = "secondary"
 ITEM.width = 2
 ITEM.price = 450
 ITEM.height = 2

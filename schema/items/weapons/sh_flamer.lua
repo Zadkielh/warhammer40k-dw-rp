@@ -13,12 +13,12 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Plasmapistol"
-ITEM.desc = "Plasmapistol"
-ITEM.model = "models/olaf/weapons/w_plasmapistol.mdl"
-ITEM.class = "weapon_plasmapistol"
-ITEM.weaponCategory = "secondary"
-ITEM.width = 2
+ITEM.name = "Flamer"
+ITEM.desc = "Flamer"
+ITEM.model = "models/olaf/weapons/w_flamer.mdl"
+ITEM.class = "weapon_phaestosflamer"
+ITEM.weaponCategory = "primary"
+ITEM.width = 4
 ITEM.price = 450
 ITEM.height = 2
 ITEM.flag = "y"
