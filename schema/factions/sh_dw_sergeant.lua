@@ -13,7 +13,6 @@ function FACTION:onSpawn(client)
 		client:SetArmor(self.armor) -- Sets armour
 		client:SetMaxHealth(self.maxhealth) -- Sets maxhealth, that means the health you can be healed to.
 		client:SetHealth(self.health) -- Sets your health, you can not be healed to this amount unless your maxhealth is the same. This is needed because gmod sets your health to 100 by default.
-		client:SetModelScale(1.36, 0)
 end
 
 FACTION.pay = 20
