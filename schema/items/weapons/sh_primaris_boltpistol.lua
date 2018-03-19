@@ -13,17 +13,17 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Crossbow"
-ITEM.desc = "A crossbow that fires a heated bolt."
-ITEM.model = "models/weapons/w_crossbow.mdl"
-ITEM.width = 3
-ITEM.height = 1
+ITEM.name = "Primaris Boltpistol"
+ITEM.desc = "Primaris Boltpistol"
+ITEM.model = "models/zadkiel/weapons/primaris_boltpistol.mdl"
+ITEM.class = "tfa_zad_primaris_boltpistol"
+ITEM.weaponCategory = "sidearm"
+ITEM.width = 2
+ITEM.price = 450
+ITEM.height = 2
+ITEM.flag = "y"
 ITEM.iconCam = {
-    pos = Vector(-12, 189.54248046875, 3),
-    ang = Angle(0, 270, 0),
-    fov = 15.882352941176
+	ang	= Angle(-0.70499622821808, 268.25439453125, 0),
+	fov	= 12.085652091515,
+	pos	= Vector(0, 200, 0)
 }
-ITEM.class = "weapon_crossbow"
-ITEM.weaponCategory = "primary"
-ITEM.price = 750
-ITEM.flag = "Y"

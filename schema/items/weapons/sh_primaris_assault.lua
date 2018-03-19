@@ -13,10 +13,10 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Overwatch Pulsar Rifle"
-ITEM.desc = "A dark energy powered assault rifle."
-ITEM.model = "models/weapons/w_irifle.mdl"
-ITEM.class = "weapon_ar2"
+ITEM.name = "Primaris Assault"
+ITEM.desc = "Primaris Assault"
+ITEM.model = "models/zadkiel/weapons/primaris_assaultbolter.mdl"
+ITEM.class = "tfa_zad_primaris_assault"
 ITEM.weaponCategory = "primary"
 ITEM.width = 4
 ITEM.price = 450

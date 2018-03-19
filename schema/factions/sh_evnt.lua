@@ -1,6 +1,6 @@
-FACTION.name = "fAdminName"
-FACTION.desc = "fAdminDesc"
-FACTION.color = Color(237, 179, 97)
+FACTION.name = "Event Characters"
+FACTION.desc = ""
+FACTION.color = Color(255, 255, 255)
 FACTION.isDefault = false
 FACTION.models = {
 	"models/breen.mdl"
@@ -8,4 +8,4 @@ FACTION.models = {
 FACTION.pay = 40
 FACTION.isGloballyRecognized = true
 
-FACTION_ADMIN = FACTION.index
+FACTION_EVENT = FACTION.index

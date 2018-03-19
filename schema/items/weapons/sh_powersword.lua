@@ -16,11 +16,11 @@
 ITEM.name = "Powersword"
 ITEM.desc = "Powersword"
 ITEM.model = "models/weapons/w_powersword_gun.mdl"
-ITEM.class = "weapon_powersword"
-ITEM.weaponCategory = "primary"
-ITEM.width = 4
+ITEM.class = "tfa_zad_powersword"
+ITEM.weaponCategory = "melee"
+ITEM.width = 2
 ITEM.price = 450
-ITEM.height = 2
+ITEM.height = 4
 ITEM.flag = "y"
 ITEM.iconCam = {
 	ang	= Angle(-0.70499622821808, 268.25439453125, 0),

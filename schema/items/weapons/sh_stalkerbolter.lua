@@ -13,11 +13,11 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Dual Boltpistol"
-ITEM.desc = "Dual Boltpistol"
-ITEM.model = "models/zadkiel/weapons/boltpistol.mdl"
-ITEM.class = "tfa_zad_dualboltpistol"
-ITEM.weaponCategory = "sidearm"
+ITEM.name = "Stalker Bolter"
+ITEM.desc = "Stalker Bolter"
+ITEM.model = "models/weapons/w_stalkerbolter_gun.mdl"
+ITEM.class = "weapon_40k_bolter_stalker"
+ITEM.weaponCategory = "primary"
 ITEM.width = 4
 ITEM.price = 450
 ITEM.height = 2

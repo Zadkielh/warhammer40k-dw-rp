@@ -13,17 +13,17 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Crowbar"
-ITEM.desc = "A tool made of a single metal bar with the ends curved."
-ITEM.model = "models/weapons/w_crowbar.mdl"
-ITEM.class = "weapon_crowbar"
-ITEM.weaponCategory = "melee"
+ITEM.name = "Grappling Hook"
+ITEM.desc = "Grappling Hook"
+ITEM.model = ""
+ITEM.class = "realistic_hook"
+ITEM.weaponCategory = "sidearm"
 ITEM.width = 2
-ITEM.height = 1
-ITEM.price = 100
+ITEM.price = 450
+ITEM.height = 2
 ITEM.flag = "y"
 ITEM.iconCam = {
-	ang	= Angle(-0.23955784738064, 270.44906616211, 0),
-	fov	= 10.780103254469,
+	ang	= Angle(-0.70499622821808, 268.25439453125, 0),
+	fov	= 12.085652091515,
 	pos	= Vector(0, 200, 0)
 }

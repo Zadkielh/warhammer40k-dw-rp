@@ -16,11 +16,11 @@
 ITEM.name = "Poweraxe"
 ITEM.desc = "Poweraxe"
 ITEM.model = "models/weapons/w_poweraxe_gun.mdl"
-ITEM.class = "weapon_poweraxe"
-ITEM.weaponCategory = "primary"
-ITEM.width = 4
+ITEM.class = "tfa_zad_poweraxe"
+ITEM.weaponCategory = "melee"
+ITEM.width = 2
 ITEM.price = 450
-ITEM.height = 2
+ITEM.height = 4
 ITEM.flag = "y"
 ITEM.iconCam = {
 	ang	= Angle(-0.70499622821808, 268.25439453125, 0),
