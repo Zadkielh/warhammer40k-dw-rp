@@ -15,8 +15,8 @@
 
 ITEM.name = "Medkit"
 ITEM.desc = "Medkit"
-ITEM.model = "models/Items/HealthKit.mdl"
-ITEM.class = "weapon_medkit"
+ITEM.model = "models/weapons/w_medkit.mdl"
+ITEM.class = "apothecary_med"
 ITEM.weaponCategory = "misc"
 ITEM.width = 2
 ITEM.price = 450

@@ -13,14 +13,14 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Stalker Bolter"
-ITEM.desc = "Stalker Bolter"
-ITEM.model = "models/weapons/w_stalkerbolter_gun.mdl"
-ITEM.class = "tfa_zad_stalkerbolter"
+ITEM.name = "Librarian Staff"
+ITEM.desc = "Librarian Staff"
+ITEM.model = "models/zadkiel/weapons/librarian_staff.mdl"
+ITEM.class = "weapon_librarianstaff_new"
 ITEM.weaponCategory = "primary"
-ITEM.width = 4
+ITEM.width = 2
 ITEM.price = 450
-ITEM.height = 2
+ITEM.height = 4
 ITEM.flag = "y"
 ITEM.iconCam = {
 	ang	= Angle(-0.70499622821808, 268.25439453125, 0),

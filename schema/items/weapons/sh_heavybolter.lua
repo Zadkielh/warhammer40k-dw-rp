@@ -16,7 +16,7 @@
 ITEM.name = "Heavybolter"
 ITEM.desc = "Heavybolter"
 ITEM.model = "models/olaf/weapons/heavybolter_old.mdl"
-ITEM.class = "weapon_crusade_heavybolter"
+ITEM.class = "tfa_zad_heavybolter"
 ITEM.weaponCategory = "primary"
 ITEM.width = 6
 ITEM.price = 450
