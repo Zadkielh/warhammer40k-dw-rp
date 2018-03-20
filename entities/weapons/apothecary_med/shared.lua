@@ -1,4 +1,4 @@
-ddCSLuaFile()
+AddCSLuaFile()
 
 SWEP.PrintName = "Apothecary Medkit"
 SWEP.Author = "robotboy655 & MaxOfS2D"
@@ -69,9 +69,9 @@ function SWEP:PrimaryAttack()
 		-- Even though the viewmodel has looping IDLE anim at all times, we need this to make fire animation work in multiplayer
 		timer.Create( "weapon_idle" .. self:EntIndex(), self:SequenceDuration(), 1, function() if ( IsValid( self ) ) then self:SendWeaponAnim( ACT_VM_IDLE ) end end )
 
-
 		self.Owner:EmitSound( DenySound )
 		self:SetNextPrimaryFire( CurTime() + 1 )
+
 
 end
 
