@@ -15,7 +15,7 @@
 
 ITEM.name = "Medkit"
 ITEM.desc = "Medkit"
-ITEM.model = ""
+ITEM.model = "models/Items/HealthKit.mdl"
 ITEM.class = "weapon_medkit"
 ITEM.weaponCategory = "misc"
 ITEM.width = 2

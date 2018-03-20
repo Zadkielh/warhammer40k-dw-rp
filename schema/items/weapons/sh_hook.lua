@@ -15,7 +15,7 @@
 
 ITEM.name = "Grappling Hook"
 ITEM.desc = "Grappling Hook"
-ITEM.model = ""
+ITEM.model = "models/weapons/w_bugbait.mdl"
 ITEM.class = "realistic_hook"
 ITEM.weaponCategory = "sidearm"
 ITEM.width = 2

@@ -15,7 +15,7 @@
 
 ITEM.name = "Camouflage"
 ITEM.desc = "Camouflage"
-ITEM.model = ""
+ITEM.model = "models/Items/BoxFlares.mdl"
 ITEM.class = "weapon_camo"
 ITEM.weaponCategory = "misc"
 ITEM.width = 2
