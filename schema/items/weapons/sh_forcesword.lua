@@ -16,7 +16,7 @@
 ITEM.name = "Force Sword"
 ITEM.desc = "Force Sword"
 ITEM.model = "models/kogg/w_powersword.mdl"
-ITEM.class = "powersword"
+ITEM.class = "tfa_zad_forcesword"
 ITEM.weaponCategory = "melee"
 ITEM.width = 2
 ITEM.price = 450
