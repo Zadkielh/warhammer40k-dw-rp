@@ -40,14 +40,18 @@ nut.command.add("ko", {
 
 nut.chat.register("emperor", { -- Edit this
     onCanSay =  function(speaker, text)
+		return speaker:IsAdmin() end,
+	onCanHear = 1000000,
     onChatAdd = function(speaker, text)
         chat.AddText(Color(255, 255, 0 ), text) -- Edit the numbers
     end,
     prefix = {"/emperor"} -- Edit this, this is the command
 })
-	
+
 nut.chat.register("slaanesh", { -- Edit this
     onCanSay =  function(speaker, text)
+			return speaker:IsAdmin() end,
+	onCanHear = 1000000,
     onChatAdd = function(speaker, text)
         chat.AddText(Color(128, 0, 128 ), text) -- Edit the numbers
     end,
@@ -56,6 +60,8 @@ nut.chat.register("slaanesh", { -- Edit this
 		
 nut.chat.register("nurgle", { -- Edit this
     onCanSay =  function(speaker, text)
+			return speaker:IsAdmin() end,
+	onCanHear = 1000000,
     onChatAdd = function(speaker, text)
         chat.AddText(Color(0, 255, 0 ), text) -- Edit the numbers
     end,
@@ -64,6 +70,8 @@ nut.chat.register("nurgle", { -- Edit this
 			
 nut.chat.register("tzeentch", { -- Edit this
     onCanSay =  function(speaker, text)
+			return speaker:IsAdmin() end,
+	onCanHear = 1000000,
     onChatAdd = function(speaker, text)
         chat.AddText(Color(0, 0, 255 ), text) -- Edit the numbers
     end,
@@ -72,9 +80,20 @@ nut.chat.register("tzeentch", { -- Edit this
 
 nut.chat.register("khorne", { -- Edit this
     onCanSay =  function(speaker, text)
+			return speaker:IsAdmin() end,
+	onCanHear = 1000000,
     onChatAdd = function(speaker, text)
         chat.AddText(Color(255, 0, 0 ), text) -- Edit the numbers
     end,
     prefix = {"/khorne"} -- Edit this, this is the command
 })
 
+nut.chat.register("chaos", { -- Edit this
+    onCanSay =  function(speaker, text)
+			return speaker:IsAdmin() end,
+	onCanHear = 1000000,
+    onChatAdd = function(speaker, text)
+        chat.AddText(Color(64, 64, 64 ), text) -- Edit the numbers
+    end,
+    prefix = {"/chaos"} -- Edit this, this is the command
+})
