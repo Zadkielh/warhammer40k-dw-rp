@@ -54,7 +54,9 @@ function SWEP:PrimaryAttack()
 
 	local ent = tr.Entity
 
-	local need = 100
+	local need = self.HealAmount
+
+	if ( IsValid( ent ) && self:Clip1() >= need && ent:Health() < ent:GetMaxHealth() ) then
 
 		self:TakePrimaryAmmo( need )
 
@@ -72,6 +74,13 @@ function SWEP:PrimaryAttack()
 
 		self.Owner:EmitSound( DenySound )
 		self:SetNextPrimaryFire( CurTime() + 1 )
+		
+		else
+
+		self.Owner:EmitSound( DenySound )
+		self:SetNextSecondaryFire( CurTime() + 1 )
+
+	end
 
 end
 
@@ -82,7 +91,6 @@ function SWEP:SecondaryAttack()
 	local ent = self.Owner
 
 	local need = self.HealAmount
-	if ( IsValid( ent ) ) then need = math.min( ent:GetMaxHealth() - ent:Health(), self.HealAmount ) end
 
 	if ( IsValid( ent ) && self:Clip1() >= need && ent:Health() < ent:GetMaxHealth() ) then
 
