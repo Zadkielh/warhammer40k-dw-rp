@@ -19,7 +19,7 @@ if (SERVER) then
 				if (client:GetMoveType() != MOVETYPE_NOCLIP and character) then
 					velocity = client:GetVelocity()
 					length2D = velocity:Length2D()
-					runSpeed = nut.config.get("runSpeed") + character:getAttrib("stm", 0)
+					runSpeed = nut.config.get("runSpeed") + (character:getAttrib("stm", 0) * 2)
 
 					if (client:WaterLevel() > 1) then
 						runSpeed = runSpeed * 0.775
@@ -47,8 +47,8 @@ if (SERVER) then
 							client:SetRunSpeed(nut.config.get("walkSpeed"))
 							client:setNetVar("brth", true)
 
-							--character:updateAttrib("end", 0.1)
-							--character:updateAttrib("stm", 0.01)
+							character:updateAttrib("end", 0.1)
+							character:updateAttrib("stm", 0.01)
 
 							hook.Run("PlayerStaminaLost", client)
 						elseif (value >= 50 and client:getNetVar("brth", false)) then
