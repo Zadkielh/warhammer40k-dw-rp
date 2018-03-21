@@ -38,3 +38,43 @@ nut.command.add("ko", {
     end
 })
 
+nut.chat.register("emperor", { -- Edit this
+    onCanSay =  function(speaker, text)
+    onChatAdd = function(speaker, text)
+        chat.AddText(Color(255, 255, 0 ), text) -- Edit the numbers
+    end,
+    prefix = {"/emperor"} -- Edit this, this is the command
+})
+	
+nut.chat.register("slaanesh", { -- Edit this
+    onCanSay =  function(speaker, text)
+    onChatAdd = function(speaker, text)
+        chat.AddText(Color(128, 0, 128 ), text) -- Edit the numbers
+    end,
+    prefix = {"/slaanesh"} -- Edit this, this is the command
+})
+		
+nut.chat.register("nurgle", { -- Edit this
+    onCanSay =  function(speaker, text)
+    onChatAdd = function(speaker, text)
+        chat.AddText(Color(0, 255, 0 ), text) -- Edit the numbers
+    end,
+    prefix = {"/nurgle"} -- Edit this, this is the command
+})
+			
+nut.chat.register("tzeentch", { -- Edit this
+    onCanSay =  function(speaker, text)
+    onChatAdd = function(speaker, text)
+        chat.AddText(Color(0, 0, 255 ), text) -- Edit the numbers
+    end,
+    prefix = {"/tzeentch"} -- Edit this, this is the command
+})
+
+nut.chat.register("khorne", { -- Edit this
+    onCanSay =  function(speaker, text)
+    onChatAdd = function(speaker, text)
+        chat.AddText(Color(255, 0, 0 ), text) -- Edit the numbers
+    end,
+    prefix = {"/khorne"} -- Edit this, this is the command
+})
+
