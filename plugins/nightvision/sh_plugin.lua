@@ -7,11 +7,11 @@ if CLIENT then
 		if LocalPlayer():getNetVar("nvision", false) then
 			local col = {}
 			col["$pp_colour_addr"] = 0.1
-			col["$pp_colour_addg"] = 0.15
+			col["$pp_colour_addg"] = 0.5
 			col["$pp_colour_addb"] = 0.2
-			col["$pp_colour_brightness"] = 0.05
-			col["$pp_colour_contrast"] = 0.85
-			col["$pp_colour_colour"] = 0.75
+			col["$pp_colour_brightness"] = 0.5
+			col["$pp_colour_contrast"] = 1
+			col["$pp_colour_colour"] = 0.2
 			col["$pp_colour_mulr"] = 0
 			col["$pp_colour_mulg"] = 0
 			col["$pp_colour_mulb"] = 0
