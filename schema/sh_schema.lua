@@ -30,6 +30,14 @@ function SCHEMA:GetGameDescription()
 	return "Warhammer 40k RP"
 end
 
+function SCHEMA:PlayerSwitchFlashlight(client, enabled)
+		return true
+end
+
+function SCHEMA:GetFallDamage(client, speed)
+	return 0
+end
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 

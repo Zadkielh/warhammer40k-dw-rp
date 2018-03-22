@@ -19,8 +19,7 @@ if (SERVER) then
 				if (client:GetMoveType() != MOVETYPE_NOCLIP and character) then
 					velocity = client:GetVelocity()
 					length2D = velocity:Length2D()
-					runSpeed = nut.config.get("runSpeed") + (character:getAttrib("stm", 0) * 2)
-
+					runSpeed = nut.config.get("runSpeed") + character:getAttrib("stm", 0) 
 					if (client:WaterLevel() > 1) then
 						runSpeed = runSpeed * 0.775
 					end
