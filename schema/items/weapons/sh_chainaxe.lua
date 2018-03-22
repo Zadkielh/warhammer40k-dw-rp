@@ -16,7 +16,7 @@
 ITEM.name = "Chainsword"
 ITEM.desc = "Chainsword"
 ITEM.model = "models/weapons/w_chainsword_gun.mdl"
-ITEM.class = "tfa_zad_chainsword"
+ITEM.class = "tfa_zad_chainaxe"
 ITEM.weaponCategory = "melee"
 ITEM.width = 4
 ITEM.price = 450
