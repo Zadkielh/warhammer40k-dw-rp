@@ -14,8 +14,8 @@
 --]]
 
 ITEM.name = "Heavy Boltpistol"
-ITEM.desc = "Camouflage"
-ITEM.model = ""
+ITEM.desc = "Heavy Boltpistol"
+ITEM.model = "models/zadkiel/weapons/boltpistol.mdl"
 ITEM.class = "tfa_zad_primaris_boltheavypistol"
 ITEM.weaponCategory = "sidearm"
 ITEM.width = 2
