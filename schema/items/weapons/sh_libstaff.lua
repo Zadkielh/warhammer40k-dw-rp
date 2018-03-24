@@ -16,7 +16,7 @@
 ITEM.name = "Librarian Staff"
 ITEM.desc = "Librarian Staff"
 ITEM.model = "models/zadkiel/weapons/librarian_staff.mdl"
-ITEM.class = "weapon_librarianstaff_new"
+ITEM.class = "weapon_librarianstaff_mana"
 ITEM.weaponCategory = "primary"
 ITEM.width = 2
 ITEM.price = 450

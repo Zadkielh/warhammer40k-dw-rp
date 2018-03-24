@@ -13,8 +13,8 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Chainsword"
-ITEM.desc = "Chainsword"
+ITEM.name = "Chainaxe"
+ITEM.desc = "Chainaxe"
 ITEM.model = "models/weapons/w_chainsword_gun.mdl"
 ITEM.class = "tfa_zad_chainaxe"
 ITEM.weaponCategory = "melee"
