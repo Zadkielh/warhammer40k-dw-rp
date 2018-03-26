@@ -2,8 +2,6 @@ PLUGIN.name = "Psyniscience"
 PLUGIN.author = "Zadkiel"
 PLUGIN.desc = "Increases psychic power."
 
-local playerMeta = FindMetaTable("Player")
-
 if (SERVER) then
 	function PLUGIN:PostPlayerLoadout(client)
 	local uniqueID = ""..client:SteamID()
@@ -12,6 +10,7 @@ if (SERVER) then
 	client:setLocalVar("psy", 0)
 		if client:getChar():hasFlags("*") then
 			client:setLocalVar("psy", client:getChar():getAttrib("psy", 0))
+			
 			timer.Create(uniqueID, 0.25, 0, function()
 				
 				if IsValid(client) then
@@ -33,7 +32,6 @@ if (SERVER) then
 				end
 			end
 			)
-			
 		end
 		
 		
@@ -52,15 +50,34 @@ if (SERVER) then
 			end
 		--end
 	end
-
+	
 else
 	nut.bar.add(function()
 		return LocalPlayer():getLocalVar("psy", 0) / 100
 	end, Color(150, 20, 150), nil, "psy")
 end
-
+nut.command.add("peril", {
+    adminOnly = true,
+    syntax = "<string name> <number gates>",
+    onRun = function(client, args)
+        local Target = nut.command.findPlayer(client, args[1])
+        if not IsValid(Target) then return end
 		
+		client.Gates = {}
+		for i = 1, (tonumber(args[2] ) or 1) do
+			local gate = ents.Create( "sent_vj_warp_gate" )
+			if ( !IsValid( gate ) )then return end
+			gate:SetPos(Target:GetPos() + Vector( math.random(-250, 250), math.random(-250, 250), math.random(10, 20) ) ) 
+			gate:SetAngles(Target:GetAngles())
+			gate.SingleSpawner = true
+			gate:Spawn()
+			gate:Activate()
+		
+			table.insert(client.Gates, gate)
+		end
 
+    end
+})
 	
 	
 	

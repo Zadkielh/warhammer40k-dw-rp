@@ -44,7 +44,6 @@ nut.command.add("charkickclass", {
     end
 })
 
-
 nut.command.add("promote", {
     adminOnly = false,
     syntax = "< Look at target player >",
@@ -135,6 +134,62 @@ nut.command.add("traittake", {
 			target:getChar():takeTraits(traits)
 
 			nut.util.notifyLocalized("Removed Traits", nil, client:Name(), traits, target:Name())
+		end
+	end
+})
+
+
+nut.command.add("checkattrib", {
+	adminOnly = true,
+	syntax = "<string name> [string attribute]",
+	onRun = function(client, arguments)
+		local target = nut.command.findPlayer(client, arguments[1])
+
+		if (IsValid(target) and target:getChar()) then
+			local attrib = arguments[2]
+			if !attrib then
+				client:notifyLocalized("FalseAttrib") 
+				return
+			end
+			
+			for k, v in pairs(nut.attribs.list) do
+				if (nut.util.stringMatches(v.name, attrib) or nut.util.stringMatches(k, attribName) or nut.util.stringMatches("*", attrib)) then
+					client:ChatPrint(target:Name().." has ".. target:getChar():getAttrib(k, 0).. " in "..v.name)
+				end
+			end
+		end
+		
+	end
+})
+
+
+nut.chat.register("gmroll", {
+	format = "(Admin Roll) %s has rolled %s.",
+	color = Color(0, 255, 0),
+	filter = "actions",
+	font = "nutChatFontItalics",
+	onCanHear = function(speaker, listener) 
+	local players = player.GetAll()
+	for k, v in pairs(players) do
+		if v:IsAdmin() then
+			Admin = v
+		end
+	end
+	return admin
+	end,
+	deadCanChat = true
+})
+
+nut.command.add("gmroll", {
+	adminOnly = true,
+	syntax = "<string name> [number maximum]",
+	onRun = function(client, arguments)
+		local target = nut.command.findPlayer(client, arguments[1])
+		if (IsValid(target) and target:getChar()) then
+			print(target)
+			local number = math.random(0, math.min(tonumber(arguments[2]) or 100, 100))
+			nut.chat.send(target, "gmroll", number)
+			nut.chat.send(target, "roll", number)
 		end
 	end
 })
