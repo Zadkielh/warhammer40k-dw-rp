@@ -13,14 +13,14 @@
     along with NutScript.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-ITEM.name = "Assault Cannon"
-ITEM.desc = "Assault Cannon"
-ITEM.model = "models/olaf/weapons/terminator_assaultcannon.mdl"
-ITEM.class = "tfa_zad_assaultcannon"
-ITEM.weaponCategory = "primary"
-ITEM.width = 6
+ITEM.name = "Shield"
+ITEM.desc = "Shield"
+ITEM.model = "models/zadkiel/w_shield.mdl"
+ITEM.class = "tfa_zad_terminator_shield"
+ITEM.weaponCategory = "melee"
+ITEM.width = 4
 ITEM.price = 450
-ITEM.height = 2
+ITEM.height = 4
 ITEM.flag = "y"
 ITEM.iconCam = {
 	ang	= Angle(-0.70499622821808, 268.25439453125, 0),
