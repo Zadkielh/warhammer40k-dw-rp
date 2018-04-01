@@ -36,7 +36,7 @@ function SWEP:Initialize()
 
 	if ( CLIENT ) then return end
 
-	timer.Create( "medkit_ammo" .. self:EntIndex(), 0.05, 0, function()
+	timer.Create( "medkit_ammo" .. self:EntIndex(), 0.025, 0, function()
 		if ( self:Clip1() < self.MaxAmmo ) then self:SetClip1( math.min( self:Clip1() + 1, self.MaxAmmo ) ) end
 	end )
 
