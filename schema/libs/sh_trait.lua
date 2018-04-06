@@ -113,35 +113,35 @@ do
 		if (isGiven) then
 			client:SetHealth(2750)
 			client:SetMaxHealth(2750)
-			client:Armor(400)
+			client:SetArmor(400)
 		end
 	end)
 	nut.trait.add("2", "Primaris Grav", function(client, isGiven)
 		if (isGiven) then
 			client:SetHealth(2750)
 			client:SetMaxHealth(2750)
-			client:Armor(450)
+			client:SetArmor(450)
 		end
 	end)
 	nut.trait.add("3", "Primaris Reiver", function(client, isGiven)
 		if (isGiven) then
 			client:SetHealth(2750)
 			client:SetMaxHealth(2750)
-			client:Armor(250)
+			client:SetArmor(250)
 		end
 	end)
 	nut.trait.add("4", "Scout", function(client, isGiven)
 		if (isGiven) then
 			client:SetHealth(2000)
 			client:SetMaxHealth(2000)
-			client:Armor(100)
+			client:SetArmor(100)
 		end
 	end)
 	nut.trait.add("5", "Terminator", function(client, isGiven)
 		if (isGiven) then
 			client:SetHealth(3500)
 			client:SetMaxHealth(3500)
-			client:Armor(500)
+			client:SetArmor(500)
 		end
 	end)
 end

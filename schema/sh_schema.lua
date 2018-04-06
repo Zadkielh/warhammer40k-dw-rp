@@ -38,6 +38,7 @@ function SCHEMA:GetFallDamage(client, speed)
 	return 0
 end
 
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -60,17 +61,7 @@ end
 ----------------------------
 
 function SCHEMA:PostPlayerLoadout(client)
-
-	/*if (IsValid(client)) then
-				
-			if client:getChar():getClass() != nil then
-				ClassKeepValues(client) 
-			end
-			
-			--if client:Team() != nil then
-				--FactionKeepValues(client, client:Team())
-			--end
-	end*/
+	nut.trait.onSpawn(client)
 end
 
 
