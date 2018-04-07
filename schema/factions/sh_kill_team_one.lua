@@ -1,6 +1,6 @@
 FACTION.name = "Kill Team Volkhard"
 FACTION.desc = ""
-FACTION.color = Color(255, 128, 0)
+FACTION.color = Color(0, 255, 255)
 FACTION.isDefault = false
 FACTION.models = {
 	"models/zadkiel/deathwatch/players/deathwatch_mk7_aquila_player.mdl"
