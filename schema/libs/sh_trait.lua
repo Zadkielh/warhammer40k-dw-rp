@@ -113,14 +113,14 @@ do
 		if (isGiven) then
 			client:SetHealth(2750)
 			client:SetMaxHealth(2750)
-			client:SetArmor(350)
+			client:SetArmor(400)
 		end
 	end)
 	nut.trait.add("2", "Primaris Grav", function(client, isGiven)
 		if (isGiven) then
 			client:SetHealth(2750)
 			client:SetMaxHealth(2750)
-			client:SetArmor(500)
+			client:SetArmor(450)
 		end
 	end)
 	nut.trait.add("3", "Primaris Reiver", function(client, isGiven)
@@ -142,6 +142,20 @@ do
 			client:SetHealth(3500)
 			client:SetMaxHealth(3500)
 			client:SetArmor(500)
+		end
+	end)
+	
+	nut.trait.add("f", "Immune to Ignition", function(client, isGiven)
+		if (isGiven) then
+			local ID = "nutFlagF"..client:SteamID()
+			if timer.Exists( ID ) then
+				timer.Remove( ID )
+			end
+			timer.Create(ID, 0.1, 0, function() 
+				if client:IsOnFire() then
+					client:Extinguish()
+				end
+			end)
 		end
 	end)
 end
