@@ -22,24 +22,26 @@ if (SERVER) then
 			if client:GetVelocity():Length() < 100 then return end
 			if !client:IsOnGround() then return end
 			if !client:getNetVar("dash") then
-			local value = (30 - ((char:getAttrib("end", 0) * 0.1)))
+			local value = (25 - ((char:getAttrib("end", 0) * 0.1)))
+
 			if client:getLocalVar("stm") <= value then client:setNetVar("dash", true) return end
 			
-			local value = client:getLocalVar("stm") - (30 - ((char:getAttrib("end", 0) * 0.1)))
+			local value = client:getLocalVar("stm") - (25 - ((char:getAttrib("end", 0) * 0.1)))
 			client:setLocalVar("stm", value)
 			
 			client:setNetVar("dash", true)
-			local speed = 0.1
-			local ratio = 2
+			local speed = 0.1 + (char:getAttrib("dex", 0) * 0.0005)
+			print(speed)
 			
 			vel = vel + ang:Forward() * moveData:GetForwardSpeed() * speed
 			vel = vel + ang:Right() * moveData:GetSideSpeed() * speed
 			vel = vel + ang:Up() * moveData:GetUpSpeed() * speed
 			
-			moveData:SetVelocity( vel - Vector(0, 0, 1000) )
+			moveData:SetVelocity( vel - Vector(0, 0, 5000) )
 
 			char:updateAttrib("end", 0.01)
 			char:updateAttrib("stm", 0.01)
+			char:updateAttrib("dex", 0.01)
 			
 			end
 		end

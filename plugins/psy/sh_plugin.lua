@@ -22,7 +22,7 @@ if (SERVER) then
 					
 						if (current < (client:getChar():getAttrib("psy", 0) / 3)) then
 							client:getChar():updateAttrib("psy", 0.001)
-							client:getChar():updateAttrib("end", 0.005)
+							client:getChar():updateAttrib("end", 0.001)
 						end
 						
 						client:setLocalVar("psy", value)
