@@ -44,7 +44,7 @@ function SCHEMA:EntityTakeDamage(client, dmg)
 			
 		if char:hasFlags("+") then
 			if (dmg:GetAttacker():IsNPC()) then 
-				dmg:ScaleDamage(  1.5 - ((client:getChar():getAttrib("con", 0) / 100)) - 0.4) // Damage is now half of what you would normally take.
+				dmg:ScaleDamage(  1.5 - ((client:getChar():getAttrib("con", 0) / 100)) - 0.25) // Damage is now half of what you would normally take.
 			end
 		end		
 	end
