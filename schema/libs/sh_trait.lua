@@ -159,9 +159,11 @@ do
 		end
 	end)
 	
-	nut.trait.add("A", "Assault", function(client, isGiven)
+	nut.trait.add("6", "Artificer", function(client, isGiven)
 		if (isGiven) then
-			
+			client:SetHealth(2000)
+			client:SetMaxHealth(2000)
+			client:SetArmor(350)
 		end
 	end)
 end
