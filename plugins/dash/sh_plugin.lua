@@ -31,7 +31,6 @@ if (SERVER) then
 			
 			client:setNetVar("dash", true)
 			local speed = 0.1 + (char:getAttrib("dex", 0) * 0.0005)
-			print(speed)
 			
 			vel = vel + ang:Forward() * moveData:GetForwardSpeed() * speed
 			vel = vel + ang:Right() * moveData:GetSideSpeed() * speed

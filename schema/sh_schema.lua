@@ -38,6 +38,17 @@ function SCHEMA:GetFallDamage(client, speed)
 	return 0
 end
 
+function SCHEMA:EntityTakeDamage(client, dmg)
+	if (client:IsPlayer()) then
+		local char = client:getChar()
+			
+		if char:hasFlags("+") then
+			if (dmg:GetAttacker():IsNPC()) then 
+				dmg:ScaleDamage(  1.5 - ((client:getChar():getAttrib("con", 0) / 100)) - 0.4) // Damage is now half of what you would normally take.
+			end
+		end		
+	end
+end
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 

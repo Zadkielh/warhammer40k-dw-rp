@@ -158,4 +158,10 @@ do
 			end)
 		end
 	end)
+	
+	nut.trait.add("A", "Assault", function(client, isGiven)
+		if (isGiven) then
+			
+		end
+	end)
 end

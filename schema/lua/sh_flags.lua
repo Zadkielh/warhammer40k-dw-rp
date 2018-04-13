@@ -23,6 +23,7 @@
 	nut.flag.add("G", "Access to GM commands")
 	nut.flag.add("V", "Access to HQ commands")
 	nut.flag.add("*", "Psyker flag")
+	nut.flag.add("+", "Assault flag")
 
 
 

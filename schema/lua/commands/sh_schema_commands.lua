@@ -58,7 +58,7 @@ nut.command.add("promote", {
 
 			if char:hasFlags("T") then
 				if Target:getChar():getFaction() == FACTION_REC then
-					Target:setFaction(FACTION_DW_TAC)
+					Target:setFaction(FACTION_PRIMUS)
 				else
 					client:notify("Character is not a recruit")
 				end
