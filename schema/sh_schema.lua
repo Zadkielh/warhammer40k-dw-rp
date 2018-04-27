@@ -9,7 +9,6 @@ nut.util.includeDir("libs")
 nut.util.includeDir("lua/commands")
 nut.util.include("lua/sh_flags.lua")
 nut.util.include("lua/sh_models.lua")
---nut.util.includeDir("lua/medical")
 nut.util.includeDir("lua/server")
 nut.util.includeDir("derma")
 print([[
@@ -44,14 +43,19 @@ function SCHEMA:EntityTakeDamage(client, dmg)
 			
 		if char:hasFlags("+") then
 			if (dmg:GetAttacker():IsNPC()) then 
-				dmg:ScaleDamage(  1.5 - ((client:getChar():getAttrib("con", 0) / 100)) - 0.25) // Damage is now half of what you would normally take.
+				dmg:ScaleDamage(  1.5 - ((client:getChar():getAttrib("con", 0) / 100)) - 0.4) // Damage is now half of what you would normally take.
 			end
 		end		
 	end
 end
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-
+function HideThings( name )
+	if (name == "CHudDamageIndicator" ) then
+		return false
+	end
+end
+hook.Add( "HUDShouldDraw", "HideThings", HideThings ) 
 
 function SCHEMA:PlayerLoadedChar(client, netChar, prevChar)
     if (prevChar) then
@@ -73,6 +77,10 @@ end
 
 function SCHEMA:PostPlayerLoadout(client)
 	nut.trait.onSpawn(client)
+	
+	if client:HasGodMode() then
+		client:GodDisable()
+	end
 end
 
 
