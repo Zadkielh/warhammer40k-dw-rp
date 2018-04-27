@@ -194,4 +194,3 @@ nut.command.add("gmroll", {
 	end
 })
 
-
