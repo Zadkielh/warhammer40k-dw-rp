@@ -360,12 +360,11 @@ function nut.bar.drawAll()
 	local players = (team.NumPlayers(LocalPlayer():Team()))
 	if !IsValid(iconmodel) then 
 	
-			print("Setting up hud model")
 			iconmodel = vgui.Create("nutSquad")
 			iconmodel:SetPos(ScrW() * 0.02, ScrH() / 3)
 			iconmodel:SetSize(64,(64 * (players - 1)))
 			iconmodel:ParentToHUD()
-			timer.Create("SquadRefresh", 30, 0, function() 
+			timer.Create("SquadRefresh", 120, 0, function() 
 			iconmodel:Remove()
 			end)
 	end
@@ -392,7 +391,7 @@ function nut.bar.drawAll()
 			y = y + h
 			nut.bar.drawSquadArmor(x, y, w, h, v)
 			
-			y = y + h + 60
+			y = y - h + 65
 			
 		end
 	end
