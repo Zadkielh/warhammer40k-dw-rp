@@ -8,7 +8,7 @@ FACTION.models = {
 }
 
 FACTION.armor = 0
-FACTION.maxhealth = 100
+FACTION.maxhealth = 2000
 FACTION.health = 100
 FACTION.weapons = {
  ""
