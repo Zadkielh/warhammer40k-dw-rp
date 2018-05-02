@@ -166,4 +166,20 @@ do
 			client:SetArmor(350)
 		end
 	end)
+	
+	nut.trait.add("7", "Inquisitor", function(client, isGiven)
+		if (isGiven) then
+			client:SetHealth(1250)
+			client:SetMaxHealth(1250)
+			client:SetArmor(200)
+		end
+	end)
+	
+	nut.trait.add("8", "Inquisitor", function(client, isGiven)
+		if (isGiven) then
+			client:SetHealth(350)
+			client:SetMaxHealth(350)
+			client:SetArmor(150)
+		end
+	end)
 end
