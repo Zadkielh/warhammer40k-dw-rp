@@ -1,4 +1,4 @@
-nut.command.add("revive", {
+nut.command.add("adminrevive", {
     adminOnly = true,
     syntax = "<string name>",
     onRun = function(client, args)
@@ -16,35 +16,44 @@ nut.command.add("revive", {
     end
 })
 
-nut.command.add("resuscitate", {
+nut.command.add("revive", {
     adminOnly = false,
     syntax = "",
     onRun = function(client, args)
 
 
-        local Target = client:GetEyeTraceNoCursor().Entity
+        local Target = nut.command.findPlayer(client, args[1])
         if not IsValid(Target) then client:notify("error") return end
+
+
 
 		local char = client:getChar()
 		local ply = char:getPlayer()
-
+		local items = char:getInv():getItems()
+		local uniqueID = "Bleedout"..Target:SteamID()
+		print(uniqueID)
 			if char:hasFlags("M") then
+				if (client:GetPos():Distance(Target:GetPos()) > 100) then client:notify("Too far away") return end
+				if Target:GetNWBool( "IsRagdolled" ) != true then client:notify("Not downed") return end
+
 				for k, v in pairs(items) do
 					if v != nil then
-
 						if (v.name == "Epinephrine" ) then
 							timer.Simple(0.1, function() client:ChatPrint("You insert the Epinephrine") end )
 							timer.Simple(2, function()
 								Target:setRagdolled(false)
+								if timer.Exists(uniqueID) then
+									timer.Remove(uniqueID)
+								end
 								timer.Simple(3, function()
-									target:GodDisable()
-									target:SetNoTarget( false )
+									Target:GodDisable()
+									Target:SetNoTarget( false )
 								end)
 								timer.Create("MarineRegen", 0.25, 0, function()
-								if target:Health() < (target:GetMaxHealth() / 4) then
-									target:SetHealth(math.Approach(target:Health(), target:GetMaxHealth(), 5))
+								if Target:Health() < (Target:GetMaxHealth() / 4) then
+									Target:SetHealth(math.Approach(Target:Health(), Target:GetMaxHealth(), 5))
 								end
-								if target:Health() >= (target:GetMaxHealth() / 4) then
+								if Target:Health() >= (Target:GetMaxHealth() / 4) then
 									timer.Remove( "MarineRegen" )
 								end
 							end)
@@ -81,7 +90,7 @@ nut.command.add("examine", {
 			if char:hasFlags("M") then
 			timer.Simple(0.1, function() client:ChatPrint("You start examining the patient") end )
         	timer.Simple(5, function()
-					if Target.MedicResult == "" then
+					if Target.MedicResult == "" or nil then
 						client:ChatPrint("Patient has no injuries.")
 					else
 						client:ChatPrint(Target.MedicResult)

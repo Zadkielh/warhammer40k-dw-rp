@@ -56,7 +56,7 @@ ITEM.functions.EquipUn = { -- sorry, for name order.
 
             local ammo = weapon:GetPrimaryAmmoType()
            
-            item:setData(item.entity,  item.player:GetAmmoCount( ammo ))
+            item:setData("reserve",  item.player:GetAmmoCount( ammo ))
 		
 			item.player:StripWeapon(item.class)
 		else
@@ -122,7 +122,7 @@ ITEM.functions.Equip = {
 
 
 			-- Remove default given ammo.
-            item.player:SetAmmo(item:getData(item.entity, 0), weapon:GetPrimaryAmmoType())
+            item.player:SetAmmo(item:getData("reserve", 0), weapon:GetPrimaryAmmoType())
             
 
 			if (client:GetAmmoCount(weapon:GetPrimaryAmmoType()) == weapon:Clip1() and item:getData("ammo", 0) == 0) then
@@ -140,8 +140,6 @@ ITEM.functions.Equip = {
 		else
 			print(Format("[Nutscript] Weapon %s does not exist!", item.class))
 		end
-
-        print(weapon:GetPrimaryAmmoType())
 
 		return false
 	end,

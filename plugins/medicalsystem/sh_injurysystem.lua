@@ -100,13 +100,8 @@ function ApplyInjury(client)
 end
 
 function PLUGIN:EntityTakeDamage( target, info )
-local Factions = {
-	FACTION_IST
-}
-	for k, v in pairs(Factions) do
-		if target:getChar():getFaction() == v then return end
-	end
-	
+	local uniqueID = "Bleedout"..target:SteamID()
+	print(uniqueID)
 	if( IsValid(target) and target:IsPlayer()) then
 		if (target:GetNWBool( "IsRagdolled" ) == false ) then
 			if( (target:Health() <= info:GetDamage()) and (info:GetDamageType() != (DMG_FALL or DMG_DISSOLVE or DMG_BURN))) then
@@ -123,11 +118,11 @@ local Factions = {
 					net.Send( target )
 					
 					
-					timer.Create( "bleedOut", time, 1, function()
-					if !IsValid(target) then return end
-						target:Kill()
-						target:SetNoTarget( false )
-				end)
+					timer.Create( uniqueID, time, 1, function()
+						if !IsValid(target) then return end
+							target:Kill()
+							target:SetNoTarget( false )
+					end)
 			end
 		end
 	end
@@ -138,15 +133,15 @@ function PLUGIN:PlayerDeath(client)
 		client:SetNWBool( "IsRagdolled", false)
 	end
 	
-	if timer.Exists( "bleedOut" ) then
-		timer.Remove( "bleedOut" )
+	if timer.Exists( uniqueID ) then
+		timer.Remove( uniqueID )
 	end
 
-	target:SetNoTarget( false )
+	client:SetNoTarget( false )
 end
 
 net.Receive( "RespawnActivate", function( len, ply)
 	print("Message Received")
-	target:SetNoTarget( true )
+	ply:SetNoTarget( true )
 	ply:Kill()
 end)

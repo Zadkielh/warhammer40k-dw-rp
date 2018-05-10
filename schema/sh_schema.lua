@@ -85,26 +85,28 @@ function SCHEMA:PostPlayerLoadout(client)
 	end
 
 	local uniqueID = "HPRegen"..client:SteamID()
-    local hp = 1/4
+    local hp = 5 * 0.25
 
     if timer.Exists(uniqueID) then
 		timer.Remove(uniqueID)
 	end
 
 	timer.Create(uniqueID, 0.25, 0, function()
-        client:SetHealth(math.min(client:Health() + hp, client:GetMaxHealth()))
+        client:SetHealth(math.Clamp( client:Health() + hp, 0, client:GetMaxHealth() ))
     end)
 
 end
 
-function PLUGIN:EntityTakeDamage( target, info )
-	local uniqueID = "HPRegen"..target:SteamID()
-	if timer.Exists(uniqueID) then
-		timer.Stop(uniqueID)
-	end
-	timer.Simple(5, function()
-		timer.Start(uniqueID)
-	end)
+function SCHEMA:EntityTakeDamage( target, info )
+	if IsValid(target) and target:IsPlayer() then
+		local uniqueID = "HPRegen"..target:SteamID()
+	    if timer.Exists(uniqueID) then
+		    timer.Stop(uniqueID)
+	    end
+	    timer.Simple(5, function()
+	    	timer.Start(uniqueID)
+    	end)
+    end
 end
 
 
