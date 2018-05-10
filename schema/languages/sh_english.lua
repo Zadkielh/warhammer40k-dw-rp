@@ -15,5 +15,6 @@ LANGUAGE = {
 	objectives = "Objectives",
 	notCombine = "You must be a member of the Combine to do this.",
 	prioritySet = "You have changed the priority status of %s.",
-	noReqDev = "You do not own a request device."
+	noReqDev = "You do not own a request device.",
+	wakingUp = "You're fading away!"
 }

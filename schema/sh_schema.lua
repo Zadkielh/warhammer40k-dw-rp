@@ -76,12 +76,35 @@ end
 ---- Spawn related ---------
 ----------------------------
 
+
 function SCHEMA:PostPlayerLoadout(client)
 	nut.trait.onSpawn(client)
 	
 	if client:HasGodMode() then
 		client:GodDisable()
 	end
+
+	local uniqueID = "HPRegen"..client:SteamID()
+    local hp = 1/4
+
+    if timer.Exists(uniqueID) then
+		timer.Remove(uniqueID)
+	end
+
+	timer.Create(uniqueID, 0.25, 0, function()
+        client:SetHealth(math.min(client:Health() + hp, client:GetMaxHealth()))
+    end)
+
+end
+
+function PLUGIN:EntityTakeDamage( target, info )
+	local uniqueID = "HPRegen"..target:SteamID()
+	if timer.Exists(uniqueID) then
+		timer.Stop(uniqueID)
+	end
+	timer.Simple(5, function()
+		timer.Start(uniqueID)
+	end)
 end
 
 

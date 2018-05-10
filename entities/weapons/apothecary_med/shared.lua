@@ -14,18 +14,18 @@ SWEP.WorldModel = Model( "models/weapons/w_medkit.mdl" )
 SWEP.ViewModelFOV = 54
 SWEP.UseHands = true
 
-SWEP.Primary.ClipSize = 300
-SWEP.Primary.DefaultClip = 300
+SWEP.Primary.ClipSize = 8
+SWEP.Primary.DefaultClip = 8
 SWEP.Primary.Automatic = false
-SWEP.Primary.Ammo = "none"
+SWEP.Primary.Ammo = "ar2"
 
 SWEP.Secondary.ClipSize = -1
 SWEP.Secondary.DefaultClip = -1
 SWEP.Secondary.Automatic = false
-SWEP.Secondary.Ammo = "none"
+SWEP.Secondary.Ammo = "ar2"
 
-SWEP.HealAmount = 200 -- Maximum heal amount per use
-SWEP.MaxAmmo = 300 -- Maxumum ammo
+SWEP.HealAmount = 1 -- Maximum heal amount per use
+SWEP.MaxAmmo = 8 -- Maxumum ammo
 
 local HealSound = Sound( "HealthKit.Touch" )
 local DenySound = Sound( "WallHealth.Deny" )
@@ -33,12 +33,6 @@ local DenySound = Sound( "WallHealth.Deny" )
 function SWEP:Initialize()
 
 	self:SetHoldType( "slam" )
-
-	if ( CLIENT ) then return end
-
-	timer.Create( "medkit_ammo" .. self:EntIndex(), 0.01, 0, function()
-		if ( self:Clip1() < self.MaxAmmo ) then self:SetClip1( math.min( self:Clip1() + 1, self.MaxAmmo ) ) end
-	end )
 
 end
 
@@ -60,7 +54,7 @@ function SWEP:PrimaryAttack()
 
 		self:TakePrimaryAmmo( need )
 
-		ent:SetHealth( math.Clamp( ent:Health() + 100, 0, ent:GetMaxHealth() ) )
+		ent:SetHealth( math.Clamp( ent:Health() + 2000, 0, ent:GetMaxHealth() ) )
 		ent:EmitSound( HealSound )
 
 		self:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
@@ -96,7 +90,7 @@ function SWEP:SecondaryAttack()
 
 		self:TakePrimaryAmmo( need )
 
-		ent:SetHealth( math.Clamp( ent:Health() + 100, 0, ent:GetMaxHealth() ) )
+		ent:SetHealth( math.Clamp( ent:Health() + 2000, 0, ent:GetMaxHealth() ) )
 		ent:EmitSound( HealSound )
 
 		self:SendWeaponAnim( ACT_VM_PRIMARYATTACK )

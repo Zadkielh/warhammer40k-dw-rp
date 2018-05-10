@@ -160,6 +160,10 @@ function DrawBorder( client )
 local len = ( math.min(client:Health(),client:GetMaxHealth() ) / 5) 
 local len2 = 35 + ( client:GetMaxHealth() / 5)
 
+    if client:GetMaxHealth() < 500 then
+        len2 = 35 + ( client:GetMaxHealth() / 2)
+    end
+
 	surface.SetDrawColor( 255, 255, 255, 255 )
 	surface.SetMaterial( hpborder2 )
 	surface.DrawTexturedRect( ScrW() * 0.05, 80, len2 - 100, 38)
@@ -167,15 +171,21 @@ local len2 = 35 + ( client:GetMaxHealth() / 5)
 	surface.SetDrawColor( 255, 255, 255, 255 )
 	surface.SetMaterial( hpborder1 )
 	surface.DrawTexturedRect( ScrW() * 0.040, 80, 48, 38)
-	
-	surface.SetDrawColor(255, 255, 255, 255)
-	surface.SetMaterial( hpborder3 )
-	surface.DrawTexturedRect( ScrW() * 0.05 + len2 - 135, 80, 139, 38)
+		
+	render.SetScissorRect( ScrW() * 0.05 + len2 - 100, 80, ScrW() * 0.05 + len2 - 00, 120, true )
+    	surface.SetDrawColor(255, 255, 255, 255)
+    	surface.SetMaterial( hpborder3 )
+	    surface.DrawTexturedRect( ScrW() * 0.05 + len2 - 135, 80, 139, 38)
+	render.SetScissorRect( 0, 0, 0, 0, false ) -- Disable after you are done
 end
 
 function DrawHealth( client )
 local len = ( math.min(client:Health(),client:GetMaxHealth() ) / 5) 
 local len2 = 110 + ( client:GetMaxHealth() / 5)
+    
+    if client:GetMaxHealth() < 500 then
+        len = ( math.min(client:Health(),client:GetMaxHealth() ) / 2)
+    end
 
 	if LocalPlayer():Alive() then
 		surface.SetDrawColor( 255, 255, 255, 255 )

@@ -1,4 +1,4 @@
-FACTION.name = "Kill Team Volkhard"
+FACTION.name = "Kill Team Atlantus"
 FACTION.desc = ""
 FACTION.color = Color(0, 255, 255)
 FACTION.isDefault = false

@@ -52,9 +52,7 @@ if (SERVER) then
 	end
 	
 else
-	nut.bar.add(function()
-		return LocalPlayer():getLocalVar("psy", 0) / 100
-	end, Color(150, 20, 150), nil, "psy")
+
 end
 nut.command.add("peril", {
     adminOnly = true,
