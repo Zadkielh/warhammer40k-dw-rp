@@ -57,22 +57,23 @@ function ApplyInjury(client)
 			client.MinorRoll = MinorInjuries[math.random(#MinorInjuries)]
 			client.ModerateRoll = ModerateInjuries[math.random(#ModerateInjuries)]
 			client.MajorRoll = MajorInjuries[math.random(#MajorInjuries)]
-			client.MoveRoll = math.random( 0, 6)
+			client.MoveRoll = math.random( 0, 8)
 			client.MoveMsg = ""
+
+			print(client.MoveRoll .. " MoveRoll")
+			print(client.MinorRoll.name)
+			print(client.ModerateRoll.name)
+			print(client.MajorRoll.name)
 
 			if client.InjuryRoll <= 10 then 
 			
 				
 		
-					if client.MoveRoll <= 4 then 
-						client.MoveMsg  = MovementInjuries[client.MoveRoll].desc
-						client:SetRunSpeed(MovementInjuries[client.MoveRoll].run)
-						client:SetWalkSpeed(MovementInjuries[client.MoveRoll].walk)
-					end
+					
 			
 				if client.InjuryRoll <= 5 then 
 				
-					client.MedicResult = ("Severe Injury: " .. client.MajorRoll.name ) 
+					client.MedicResult = ("Severe Injury: " .. client.MajorRoll.name) 
 					Result = client.MajorRoll.desc
 					client:SetHealth(client:Health() * 0.5)
 					client:getChar():updateAttrib(client.MajorRoll.attribute, client.MajorRoll.modifier)
@@ -80,7 +81,7 @@ function ApplyInjury(client)
 				
 				elseif ((client.InjuryRoll > 5) and (client.InjuryRoll <= 10)) then
 					
-					client.MedicResult = ("Moderate Injury: " .. client.ModerateRoll.name )
+					client.MedicResult = ("Moderate Injury: " .. client.ModerateRoll.name)
 					Result = client.ModerateRoll.desc
 					client:SetHealth(client:Health() * 0.7)
 					client:getChar():updateAttrib(client.ModerateRoll.attribute, client.ModerateRoll.modifier)
@@ -90,19 +91,29 @@ function ApplyInjury(client)
 			
 			elseif ((client.InjuryRoll <= 15) and (client.InjuryRoll > 10)) then
 			
-				client.MedicResult = ("Minor Injury: " .. client.MinorRoll.name .. "\n" .. MovementInjuries[client.MoveRoll].name )
-				Result = client.MinorRoll.desc .."\n".. MoveMsg
+				client.MedicResult = ("Minor Injury: " .. client.MinorRoll.name  )
+				Result = client.MinorRoll.desc
 				client:ChatPrint(Result)
 		
+			end
+
+			if client.MoveRoll <= 4 then 
+				client.MoveMsg  = MovementInjuries[client.MoveRoll].desc
+				client.MoveName = MovementInjuries[client.MoveRoll].name
+				print(client.MoveName)
+				client:SetRunSpeed(MovementInjuries[client.MoveRoll].run)
+				client:SetWalkSpeed(MovementInjuries[client.MoveRoll].walk)
+				client.MedicResult = client.MedicResult .. "\n" .. "Movement Injury: " .. client.MoveName
+				Result = Result .."\n".. client.MoveMsg
 			end
 		client.KeepInjury = true
 		
 end
 
 function PLUGIN:EntityTakeDamage( target, info )
-	local uniqueID = "Bleedout"..target:SteamID()
-	print(uniqueID)
-	if( IsValid(target) and target:IsPlayer()) then
+	if(target:IsNPC()) then return end
+	if( IsValid(target) and (target:IsPlayer() or target:IsBot())) then
+		local uniqueID = "Bleedout"..target:SteamID()
 		if (target:GetNWBool( "IsRagdolled" ) == false ) then
 			if( (target:Health() <= info:GetDamage()) and (info:GetDamageType() != (DMG_FALL or DMG_DISSOLVE or DMG_BURN))) then
 				local time = 20 + (target:getChar():getAttrib("con", 0) / 0.4)
@@ -132,7 +143,7 @@ function PLUGIN:PlayerDeath(client)
 	if (client:GetNWBool( "IsRagdolled" ) == true ) then
 		client:SetNWBool( "IsRagdolled", false)
 	end
-	
+	local uniqueID = "Bleedout"..client:SteamID()
 	if timer.Exists( uniqueID ) then
 		timer.Remove( uniqueID )
 	end

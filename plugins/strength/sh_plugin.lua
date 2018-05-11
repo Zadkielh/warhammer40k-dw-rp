@@ -10,9 +10,13 @@ if (SERVER) then
 		end
 	end
 
-	function PLUGIN:PlayerThrowPunch(client, hit)
-		if (client:getChar()) then
-			client:getChar():updateAttrib("str", 0.001)
+	function PLUGIN:OnNPCKilled( npc, attacker, inflictor )
+		if IsValid(attacker) and attacker:IsPlayer() then
+			if (attacker:getChar()) then
+				if weapons.IsBasedOn( attacker:GetActiveWeapon():GetClass(), "tfa_melee_base" ) then
+					attacker:getChar():updateAttrib("str", 0.01)
+				end
+			end
 		end
 	end
 end

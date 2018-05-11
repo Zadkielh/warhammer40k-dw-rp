@@ -9,6 +9,7 @@ nut.util.includeDir("libs")
 nut.util.includeDir("lua/commands")
 nut.util.include("lua/sh_flags.lua")
 nut.util.include("lua/sh_models.lua")
+nut.util.include("lua/sh_quest.lua")
 nut.util.includeDir("lua/medical")
 nut.util.includeDir("lua/server")
 nut.util.includeDir("derma")
@@ -39,17 +40,40 @@ function SCHEMA:GetFallDamage(client, speed)
 end
 
 function SCHEMA:EntityTakeDamage(client, dmg)
-	if (client:IsPlayer()) then
-		local char = client:getChar()
-			
-		if char:hasFlags("+") then
-			if (dmg:GetAttacker():IsNPC()) then 
-				dmg:ScaleDamage(  1.5 - ((client:getChar():getAttrib("con", 0) / 100)) - 0.4) // Damage is now half of what you would normally take.
-			end
-		end		
-	end
-end
 
+	local power = 0
+	if dmg:GetAttacker():IsPlayer() then
+		if weapons.IsBasedOn( dmg:GetAttacker():GetActiveWeapon():GetClass(), "tfa_melee_base" ) then
+			power = dmg:GetAttacker():getChar():getAttrib("str", 0) / 100
+		end
+	end
+	if (client:IsPlayer()) then
+	local assault = 0.4
+	local con = client:getChar():getAttrib("con", 0) / 100
+	
+		local char = client:getChar()
+		
+		dmg:ScaleDamage(  1.5 - con + power)
+
+		if char:hasFlags("+") and dmg:GetAttacker():IsNPC() then
+			dmg:ScaleDamage(  1.5 - con - assault)
+		end	
+	end
+
+	if (client:IsNPC()) then
+		dmg:ScaleDamage( 1 + power)
+	end
+
+	if IsValid(client) and client:IsPlayer() then
+		local uniqueID = "HPRegen"..client:SteamID()
+	    if timer.Exists(uniqueID) then
+		    timer.Stop(uniqueID)
+	    end
+	    timer.Simple(5, function()
+	    	timer.Start(uniqueID)
+    	end)
+    end
+end
 --------------------------------------------------------------------------------------------------------------------------------------------
 function HideThings( name )
 	if (name == "CHudDamageIndicator" ) then
@@ -60,7 +84,7 @@ hook.Add( "HUDShouldDraw", "HideThings", HideThings )
 
 function SCHEMA:PlayerLoadedChar(client, netChar, prevChar)
     if (prevChar) then
-        client:notifyLocalized("Loaded Character")
+        client:notifyLocalized("Loadedy Character")
     end
 
 	
@@ -95,18 +119,6 @@ function SCHEMA:PostPlayerLoadout(client)
         client:SetHealth(math.Clamp( client:Health() + hp, 0, client:GetMaxHealth() ))
     end)
 
-end
-
-function SCHEMA:EntityTakeDamage( target, info )
-	if IsValid(target) and target:IsPlayer() then
-		local uniqueID = "HPRegen"..target:SteamID()
-	    if timer.Exists(uniqueID) then
-		    timer.Stop(uniqueID)
-	    end
-	    timer.Simple(5, function()
-	    	timer.Start(uniqueID)
-    	end)
-    end
 end
 
 

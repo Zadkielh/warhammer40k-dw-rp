@@ -14,9 +14,6 @@ if (SERVER) then
 			if (IsValid(client)) then
 				client:getChar():updateAttrib("con", 0.001)
 			end
-			if (dmg:GetAttacker():IsNPC()) then
-				dmg:ScaleDamage(  1.5 - ((client:getChar():getAttrib("con", 0) / 200)) ) // Damage is now half of what you would normally take.
-			end
 		end		
 	end
 

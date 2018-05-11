@@ -56,6 +56,7 @@ nut.command.add("revive", {
 								if Target:Health() >= (Target:GetMaxHealth() / 4) then
 									timer.Remove( "MarineRegen" )
 								end
+								Target:SetNWBool( "IsRagdolled", false )
 							end)
 							end
 							)
@@ -92,8 +93,11 @@ nut.command.add("examine", {
         	timer.Simple(5, function()
 					if Target.MedicResult == "" or nil then
 						client:ChatPrint("Patient has no injuries.")
+					elseif Target.InjuryRoll == nil then
+						client:ChatPrint("Patient has no injuries.")
 					else
 						client:ChatPrint(Target.MedicResult)
+						print(Target.InjuryRoll)
 					end
 			end
 			)
@@ -108,12 +112,12 @@ nut.command.add("examine", {
 
 nut.command.add("treat", {
     adminOnly = false,
-    syntax = "<string bodypart> <look at target>",
+    syntax = "<string bodypart> <name>",
     onRun = function(client, args)
 
 
-        local Target = client or client:GetEyeTraceNoCursor().Entity
-        if not IsValid(Target) then return end
+        local Target = nut.command.findPlayer(client, args[2]) or client:GetEyeTraceNoCursor().Entity
+        if not IsValid(Target) then client:notify("error") return end
 
 		local char = client:getChar()
 		local ply = char:getPlayer()
@@ -151,7 +155,7 @@ nut.command.add("treat", {
 								)
 								break
 							else
-
+                                client:notify("Lacking tools")
 							end
 						end
 					end
@@ -195,14 +199,14 @@ nut.command.add("treat", {
 								)
 								break
 							else
-
+                                client:notify("Lacking tools")
 							end
 						end
 					end
 				elseif args[1] == "moderate" or args[1] == "Moderate" then
 					for k, v in pairs(items) do
 						if v != nil then
-
+							print(Target.InjuryRoll)
 							if (v.name == "Large Kit of Medical Tools" and (Target.InjuryRoll > 5) and (Target.InjuryRoll <= 10)) then
 								
 								client:notify("You have begun treating the patient.")
@@ -239,7 +243,50 @@ nut.command.add("treat", {
 								)
 								break
 							else
+                                client:notify("Lacking tools")
+							end
+						end
+					end
+				elseif args[1] == "minor" or args[1] == "minor" then
+					for k, v in pairs(items) do
+						if v != nil then
+							print(Target.InjuryRoll)
+							if (v.name == "Large Kit of Medical Tools" and (Target.InjuryRoll <= 15) and (Target.InjuryRoll > 10)) then
+								
+								client:notify("You have begun treating the patient.")
 
+									Target:SetWalkSpeed(10)
+									Target:SetRunSpeed(10)
+									client:SetWalkSpeed(10)
+									client:SetRunSpeed(10)
+
+								timer.Create("ModerateRegen", 0.25, 0, function()
+									while Target:Health() < Target:GetMaxHealth() do
+										Target:SetHealth(Target:Health() + 2.5)
+									end
+									if Target:Health() >= (Target:GetMaxHealth()) then
+										timer.Remove( "ModerateRegen" )
+									end
+								end
+								)
+
+								timer.Simple(5, function()
+									Target:SetWalkSpeed(nut.config.get("walkSpeed") )
+									Target:SetRunSpeed(nut.config.get("runSpeed") )
+									client:SetWalkSpeed(nut.config.get("walkSpeed") )
+									client:SetRunSpeed(nut.config.get("runSpeed") )
+
+									Target.InjuryRoll = 20
+									Result = ""
+									Target.MedicResult = ""
+									Target.KeepInjury = false
+									client:notify("You are done treating the patient")
+									-- Regen Timer
+								end
+								)
+								break
+							else
+                                client:notify("Lacking tools")
 							end
 						end
 					end
@@ -247,7 +294,7 @@ nut.command.add("treat", {
 					for k, v in pairs(items) do
 						if v != nil then
 
-							if ((v.name == "Acetaminophen" and v.name == "Antibiotics") and (Target.ModerateRoll.name == "Second Degree Burns")) then
+							if ((v.name == "Acetaminophen" and v.name == "Antibiotics") and (Target.ModerateRoll.name == "Second Degree Burns" or Target.MajorRoll.name == "Third Degree Burn" )) then
 
 								client:notify("You have begun treating the patient.")
 
@@ -284,7 +331,7 @@ nut.command.add("treat", {
 								break
 
 							else
-
+                                client:notify("Lacking tools")
 							end
 						end
 					end
@@ -331,7 +378,7 @@ nut.command.add("treat", {
 								break
 
 							else
-
+                                client:notify("Lacking tools")
 							end
 						end
 					end
@@ -376,10 +423,12 @@ nut.command.add("treat", {
 								break
 
 							else
-
+                                client:notify("Lacking tools")
 							end
 						end
-					end
+				    end
+			    else
+			    client:notify("Invalid part")
 				end
 
 			else

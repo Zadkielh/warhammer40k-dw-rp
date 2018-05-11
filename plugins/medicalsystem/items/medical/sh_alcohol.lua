@@ -1,8 +1,8 @@
 ITEM.name = "Alcohol"
-ITEM.model = "models/props_junk/glassjug01.mdl"
+ITEM.model = "models/healthvial.mdl"
 ITEM.width = 1
 ITEM.height = 1
-ITEM.desc = "90-100% Pure ethanol, used to sterilize wounds."
+ITEM.desc = "Used for treating infections"
 ITEM.category = "Medical"
 ITEM.heal = 0
 ITEM.uses = 1
