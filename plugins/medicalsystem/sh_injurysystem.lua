@@ -112,7 +112,7 @@ end
 
 function PLUGIN:EntityTakeDamage( target, info )
 	if(target:IsNPC()) then return end
-	if( IsValid(target) and (target:IsPlayer()) then
+	if( IsValid(target) and (target:IsPlayer())) then
 		local uniqueID = "Bleedout"..target:SteamID()
 		if (target:GetNWBool( "IsRagdolled" ) == false ) then
 			if( (target:Health() <= info:GetDamage()) and (info:GetDamageType() != (DMG_FALL or DMG_DISSOLVE or DMG_BURN))) then
