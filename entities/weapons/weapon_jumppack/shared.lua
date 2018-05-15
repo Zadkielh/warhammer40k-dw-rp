@@ -1,6 +1,6 @@
 if CLIENT then
 	SWEP.PrintName = "Jump Pack"
-	SWEP.Author = "Sgt. Ownage (Edited by Zadkiel)"
+	SWEP.Author = "Zadkiel"
 	SWEP.Slot = 3
 	SWEP.SlotPos = 1
 end

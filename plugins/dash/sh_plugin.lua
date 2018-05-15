@@ -92,8 +92,8 @@ end
 
 function PLUGIN:HUDPaintBackground()
 	if LocalPlayer():GetNWBool("JumpPackEnabled") then
-	local x = ScrW() * 0.05
-	local y = ScrH() * 0.2
+	local x = ScrW() * 0.95
+	local y = ScrH() * 0.6
 	local w = 50
 	local h = 250
 	local red = 255
@@ -102,6 +102,13 @@ function PLUGIN:HUDPaintBackground()
 	local opacity = 150
 	
 	local value = LocalPlayer():GetAmmoCount("AirboatGun")
+
+	local tr = util.TraceLine({
+    	start = LocalPlayer():GetPos(),
+   		endpos = LocalPlayer():GetPos() - Vector(0, 0, 35000),
+    	filter = LocalPlayer()
+	})
+	local groundpos = tr.HitPos
 
 	if value <= 100 then
 		blue = 0
@@ -115,6 +122,12 @@ function PLUGIN:HUDPaintBackground()
 		green = 255
 		red = 50
 		opacity = 150
+	end
+
+	if LocalPlayer():GetPos():Distance(groundpos) > 800 then
+		surface.SetDrawColor(255, 255, 255, 255)
+		surface.SetMaterial(Material("vgui/ironwill.png"))
+		surface.DrawTexturedRect(x, y - 60, 50, 50)
 	end
 	
 	surface.SetDrawColor(red, green, blue, opacity)

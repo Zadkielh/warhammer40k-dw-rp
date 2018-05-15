@@ -17,12 +17,12 @@ SWEP.UseHands = true
 SWEP.Primary.ClipSize = 8
 SWEP.Primary.DefaultClip = 8
 SWEP.Primary.Automatic = false
-SWEP.Primary.Ammo = "ar2"
+SWEP.Primary.Ammo = "HelicopterGun"
 
 SWEP.Secondary.ClipSize = -1
 SWEP.Secondary.DefaultClip = -1
 SWEP.Secondary.Automatic = false
-SWEP.Secondary.Ammo = "ar2"
+SWEP.Secondary.Ammo = "HelicopterGun"
 
 SWEP.HealAmount = 1 -- Maximum heal amount per use
 SWEP.MaxAmmo = 8 -- Maxumum ammo
