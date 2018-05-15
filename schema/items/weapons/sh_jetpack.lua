@@ -16,7 +16,7 @@
 ITEM.name = "Jump Pack"
 ITEM.desc = "Jump Pack"
 ITEM.model = "models/wings/wings_folded.mdl"
-ITEM.class = "weapon_jetpack"
+ITEM.class = "weapon_jumppack"
 ITEM.weaponCategory = "misc"
 ITEM.width = 1
 ITEM.price = 450
