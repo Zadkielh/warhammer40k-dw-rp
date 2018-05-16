@@ -57,37 +57,37 @@ if (SERVER) then
 			if client:GetPos():Distance(groundpos) > 800 then
 				if (moveData:KeyDown(IN_WALK)) then
 					client:SetNWBool("CanPound", true)
-					moveData:SetVelocity( vel - Vector(0, 0, 350))
-					
-					hook.Add("GetFallDamage", "AssaultSmash", function(ply,spd)
-						if ply:GetNWBool("CanPound") then
-							ply:GodEnable()
-							timer.Simple(0.5, function()
-								ply:GodDisable()
-							end)
-							
-							local ef = EffectData()
-							ef:SetOrigin(ply:GetPos())
-							ef:SetScale(600)
-							util.Effect("ThumperDust",ef,true,true)
-							util.Effect("zad_medium_explosion",ef,true,true)
-							util.Effect("ThumperDust",ef,true,true)
-							util.Effect("ThumperDust",ef,true,true)
-							ply:EmitSound("ambient/explosions/explode_4.wav",511,35)
-												
-							util.BlastDamage(ply,ply,ply:GetPos(),spd/6,250)
-							ply:SetNWBool("CanPound", false)
-							return 0
-										
-						end
-					end
-					)
+					moveData:SetVelocity( vel - Vector(0, 0, 400))
 				end
 			end
 		end
 		
 	end
 end
+
+function PLUGIN:GetFallDamage(ply,spd)
+	if ply:GetNWBool("CanPound") then
+		ply:GodEnable()
+		timer.Simple(0.5, function()
+			ply:GodDisable()
+		end)
+							
+		local ef = EffectData()
+		ef:SetOrigin(ply:GetPos())
+		ef:SetScale(600)
+		util.Effect("ThumperDust",ef,true,true)
+		util.Effect("zad_medium_explosion",ef,true,true)
+		util.Effect("ThumperDust",ef,true,true)
+		util.Effect("ThumperDust",ef,true,true)
+		ply:EmitSound("ambient/explosions/explode_4.wav",511,35)
+												
+		util.BlastDamage(ply,ply,ply:GetPos(),spd/6,250)
+		ply:SetNWBool("CanPound", false)
+			return 0
+										
+	end
+end
+
 
 
 function PLUGIN:HUDPaintBackground()
