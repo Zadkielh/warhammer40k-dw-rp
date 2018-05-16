@@ -57,7 +57,7 @@ if (SERVER) then
 			if client:GetPos():Distance(groundpos) > 800 then
 				if (moveData:KeyDown(IN_WALK)) then
 					client:SetNWBool("CanPound", true)
-					moveData:SetVelocity( vel - Vector(0, 0, 250))
+					moveData:SetVelocity( vel - Vector(0, 0, 350))
 					
 					hook.Add("GetFallDamage", "AssaultSmash", function(ply,spd)
 						if ply:GetNWBool("CanPound") then
@@ -110,14 +110,14 @@ function PLUGIN:HUDPaintBackground()
 	})
 	local groundpos = tr.HitPos
 
-	if value <= 100 then
+	if value <= 750 then
 		blue = 0
 		green = 50
 		red = 250
 		opacity = 150
 	end
 
-	if value >= 200 then
+	if value >= 120 then
 		blue = 0
 		green = 255
 		red = 50
@@ -131,7 +131,7 @@ function PLUGIN:HUDPaintBackground()
 	end
 	
 	surface.SetDrawColor(red, green, blue, opacity)
-	surface.DrawRect(x, y, w, h * value / 300)
+	surface.DrawRect(x, y, w, h * value / 200)
 	surface.DrawOutlinedRect(x, y, w, h)
 	end
 end

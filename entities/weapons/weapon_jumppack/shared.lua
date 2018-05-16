@@ -6,7 +6,7 @@ if CLIENT then
 end
 
 SWEP.Primary.ClipSize = 0
-SWEP.Primary.DefaultClip = 300
+SWEP.Primary.DefaultClip = 200
 SWEP.Primary.Ammo = "AirboatGun"
 SWEP.DrawAmmo = true
 
@@ -102,7 +102,7 @@ if SERVER then
 							ply:SetNWFloat("NextJumpPackEffect",CurTime()+0.95)
 						end
 					end
-				elseif (ply:GetAmmoCount("AirboatGun") < 300) and ply:IsOnGround() then
+				elseif (ply:GetAmmoCount("AirboatGun") < 200) and ply:IsOnGround() then
 					ply:StopSound("JumpThrust")
 					ply:GiveAmmo(1, "AirboatGun", true)
 				end
