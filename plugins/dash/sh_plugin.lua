@@ -131,7 +131,7 @@ function PLUGIN:HUDPaintBackground()
 	end
 	
 	surface.SetDrawColor(red, green, blue, opacity)
-	surface.DrawRect(x, y, w, h * value / 200)
+	surface.DrawRect(x, y, w, h * value / 150)
 	surface.DrawOutlinedRect(x, y, w, h)
 	end
 end
